@@ -495,6 +495,7 @@
             color: #fef3c7;
             padding: 2px 8px;
             border-radius: 4px;
+            font-family: monospace;
             font-weight: 700;
         }
 
@@ -729,6 +730,7 @@
                     <option value="impromptu" selected>Table Topic (1 to 2 Min Impromptu)</option>
                     <option value="icebreaker">Toastmasters Ice Breaker (4 to 6 Min Session)</option>
                     <option value="prepared7">Toastmasters Prepared Speech (5 to 7 Min Session)</option>
+                    <option value="feedback">Toastmasters Audience Floor Feedback (30 Sec to 1 Min)</option>
                 </select>
             </div>
         </div>
@@ -795,6 +797,17 @@
                 <li><strong>6:00 - 6:59</strong> | <span style="color:#eab308; font-weight:700;">🟡 Yellow Card:</span> 1 Minute remaining - begin summarizing key points.</li>
                 <li><strong>7:00 - 7:30</strong> | <span style="color:#ef4444; font-weight:700;">🔴 Red Card:</span> Target time reached (7 Minutes). 30-second grace window active.</li>
                 <li><strong>7:30+</strong> | <span style="color:#f87171; font-weight:700;">⚠️ Overtime:</span> Exceeds maximum allowance (Disqualification threshold).</li>
+            </ul>
+        </div>
+
+        <div class="framework-box hidden" id="guideFeedback">
+            <strong>💡 Toastmasters Official Signals (Audience Floor Feedback: 30 Sec – 1 Minute):</strong>
+            <ul>
+                <li><strong>0:00 - 0:29</strong> | <span style="color:var(--text-muted); font-weight:700;">⚪ Opening Appreciation:</span> Thank the Toastmaster/Leader, state meeting impression & reference Theme.</li>
+                <li><strong>0:30 - 0:44</strong> | <span style="color:#22c55e; font-weight:700;">🟢 Green Card:</span> Minimum time reached (30 Seconds). Commend a specific speaker & use Word of the Day.</li>
+                <li><strong>0:45 - 0:59</strong> | <span style="color:#eab308; font-weight:700;">🟡 Yellow Card:</span> 15 seconds remaining - wrap up key reflection point.</li>
+                <li><strong>1:00 - 1:15</strong> | <span style="color:#ef4444; font-weight:700;">🔴 Red Card:</span> Target limit reached (1 Minute). Deliver inspiring closing statement.</li>
+                <li><strong>1:15+</strong> | <span style="color:#f87171; font-weight:700;">⚠️ Overtime:</span> Exceeds 15-second grace window threshold.</li>
             </ul>
         </div>
 
@@ -903,7 +916,6 @@
         }
     }
 
-    // Generate icon on page load
     window.addEventListener('DOMContentLoaded', generateDynamicAppleTouchIcon);
 
     // Theme Switcher Logic
@@ -920,7 +932,6 @@
         localStorage.setItem('app_theme', theme);
     }
 
-    // Load saved theme or default to 'dark'
     const savedTheme = localStorage.getItem('app_theme') || 'dark';
     applyTheme(savedTheme);
 
@@ -933,7 +944,8 @@
     const TIMING_RULES = {
         impromptu: { green: 60, yellow: 90, red: 120, grace: 150 },      // 1m, 1m30s, 2m, 2m30s
         icebreaker: { green: 240, yellow: 300, red: 360, grace: 390 },   // 4m, 5m, 6m, 6m30s
-        prepared7: { green: 300, yellow: 360, red: 420, grace: 450 }     // 5m, 6m, 7m, 7m30s
+        prepared7: { green: 300, yellow: 360, red: 420, grace: 450 },    // 5m, 6m, 7m, 7m30s
+        feedback: { green: 30, yellow: 45, red: 60, grace: 75 }          // 30s, 45s, 1m, 1m15s
     };
 
     function startTimer() {
@@ -966,7 +978,7 @@
         window.speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = lang;
-        utterance.rate = 0.85; // Clear natural speed
+        utterance.rate = 0.85;
         window.speechSynthesis.speak(utterance);
     }
 
@@ -1006,14 +1018,14 @@
             }
 
             window.speechSynthesis.cancel();
-            startTimer(); // Automatically start timer when speech audio begins
+            startTimer();
 
             const utterance = new SpeechSynthesisUtterance(plainText);
             utterance.lang = 'en-US';
             utterance.rate = 0.9;
 
             utterance.onend = () => {
-                stopTimer(); // Automatically stop timer when audio finishes
+                stopTimer();
                 isSpeakingScript = false;
                 btn.textContent = '🔊 Listen Script';
             };
@@ -1049,6 +1061,7 @@
         const guideImpromptu = document.getElementById('guideImpromptu');
         const guideIcebreaker = document.getElementById('guideIcebreaker');
         const guidePrepared7 = document.getElementById('guidePrepared7');
+        const guideFeedback = document.getElementById('guideFeedback');
         
         displayTopic("Awaiting initiation protocols. Select variables above...");
         document.getElementById('aiSpeechContainer').classList.add('hidden');
@@ -1056,6 +1069,7 @@
         guideImpromptu.classList.add('hidden');
         guideIcebreaker.classList.add('hidden');
         guidePrepared7.classList.add('hidden');
+        guideFeedback.classList.add('hidden');
 
         if (mode === 'icebreaker') {
             roomTitle.textContent = "3. Active Session Dashboard (Ice Breaker Speech)";
@@ -1063,6 +1077,9 @@
         } else if (mode === 'prepared7') {
             roomTitle.textContent = "3. Active Session Dashboard (7-Min Prepared Speech)";
             guidePrepared7.classList.remove('hidden');
+        } else if (mode === 'feedback') {
+            roomTitle.textContent = "3. Active Session Dashboard (Audience Floor Feedback)";
+            guideFeedback.classList.remove('hidden');
         } else {
             roomTitle.textContent = "3. Active Session Dashboard (Table Topics)";
             guideImpromptu.classList.remove('hidden');
@@ -1370,6 +1387,8 @@
             lengthInstruction = "Create a complete 4-to-6 minute Toastmasters Ice Breaker speech draft introducing oneself, personal background, communication goals, and anecdotes. DO NOT use markdown bold signs or raw bullet points anywhere in your output script text.";
         } else if (mode === 'prepared7') {
             lengthInstruction = "Create a complete, structured 5-to-7 minute Toastmasters speech draft layout with clear content flow, well-elaborated paragraphs, and actionable takeaways. DO NOT use markdown bold signs or raw bullet points anywhere in your output script text.";
+        } else if (mode === 'feedback') {
+            lengthInstruction = "Create an enthusiastic, spontaneous 30-to-60 second (50-90 words) Audience Floor Feedback speech responding to the Toastmaster/Leader's call for meeting impressions. Thank the leader, commend meeting energy, and MUST naturally incorporate the Word of the Day and align with the Theme of the Day. DO NOT use markdown formatting.";
         } else {
             lengthInstruction = "Write a complete, spoken example speech responding to this exact topic for a short 1-to-2 minute Toastmasters impromptu table topic performance. DO NOT use markdown formatting symbols.";
         }
@@ -1433,6 +1452,8 @@
             lengthInstruction = "generate an Ice Breaker Toastmasters speech prompt and script outline (4 to 6 minutes). Focus on self-introduction, personal journey, key life experiences, and Toastmasters goals. Do not use asterisks or raw bullet points inside the sections.";
         } else if (mode === 'prepared7') {
             lengthInstruction = "generate a 5-to-7 minute Toastmasters formal prepared speech prompt and script outline. Provide well-developed paragraphs for a 5-to-7 minute speech. Do not use asterisks or raw bullet points inside the sections.";
+        } else if (mode === 'feedback') {
+            lengthInstruction = "generate an enthusiastic 30-to-60 second (50-90 words) Toastmasters Audience Floor Feedback speech response. Act as an audience member giving spontaneous feedback when asked by the Toastmaster/Leader. The speech MUST explicitly weave in the Theme of the Day and Word of the Day. Do not use asterisks or raw bullet points.";
         } else {
             lengthInstruction = "write a full example speech responding directly and uniquely to that newly generated topic for a 1-to-2 minute Toastmasters table topic performance.";
         }
