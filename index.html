@@ -5,17 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Speech Design Hub | Professional Presentation Suite</title>
     <style>
+        /* CSS Variable System — Dark Mode as DEFAULT */
         :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --input-bg: #0f172a;
+            --input-text: #f8fafc;
+            --input-border: #334155;
+            --btn-primary-bg: #38bdf8;
+            --btn-primary-text: #0f172a;
+            --btn-primary-hover: #0284c7;
+            --btn-secondary-bg: #475569;
+            --btn-secondary-text: #f8fafc;
+            --success: #16a34a;
+
+            /* Toastmasters Signals - Dark Mode */
+            --tm-green-bg: #052e16;
+            --tm-green-border: #22c55e;
+            --tm-green-text: #4ade80;
+
+            --tm-yellow-bg: #422006;
+            --tm-yellow-border: #eab308;
+            --tm-yellow-text: #fde047;
+
+            --tm-red-bg: #450a0a;
+            --tm-red-border: #ef4444;
+            --tm-red-text: #fca5a5;
+
+            /* Special Display Boxes - Dark Mode */
+            --wod-bg: #0c4a6e;
+            --wod-border: #0284c7;
+            --wod-text: #e0f2fe;
+            --wod-title: #38bdf8;
+
+            --speech-bg: #0f172a;
+            --speech-border: #334155;
+            --speech-text: #e2e8f0;
+            --topic-bg: #111827;
+            --topic-border: #38bdf8;
+            --framework-bg: #182232;
+            --framework-border: #334155;
+
+            /* Distinct Non-Timer Script Block Headers */
+            --lbl-hook: #a78bfa;
+            --lbl-point: #38bdf8;
+            --lbl-story: #f0abfc;
+            --lbl-drop: #818cf8;
+        }
+
+        /* Light Mode Theme Overrides */
+        body.light-theme {
             --bg-color: #f8fafc;
             --card-bg: #ffffff;
+            --card-border: #e2e8f0;
             --text-main: #1e293b;
             --text-muted: #64748b;
-            --primary: #0f172a;
-            --primary-hover: #334155;
+            --input-bg: #ffffff;
+            --input-text: #1e293b;
+            --input-border: #e2e8f0;
+            --btn-primary-bg: #0f172a;
+            --btn-primary-text: #ffffff;
+            --btn-primary-hover: #334155;
+            --btn-secondary-bg: #64748b;
+            --btn-secondary-text: #ffffff;
             --success: #16a34a;
-            --border: #e2e8f0;
-            --accent-blue: #2563eb;
+
+            /* Toastmasters Signals - Light Mode */
+            --tm-green-bg: #f0fdf4;
+            --tm-green-border: #22c55e;
+            --tm-green-text: #15803d;
+
+            --tm-yellow-bg: #fefce8;
+            --tm-yellow-border: #eab308;
+            --tm-yellow-text: #a16207;
+
+            --tm-red-bg: #fef2f2;
+            --tm-red-border: #ef4444;
+            --tm-red-text: #b91c1c;
+
+            /* Special Display Boxes - Light Mode */
+            --wod-bg: #f0f9ff;
+            --wod-border: #bae6fd;
+            --wod-text: #334155;
+            --wod-title: #0369a1;
+
+            --speech-bg: #ffffff;
+            --speech-border: #e2e8f0;
+            --speech-text: #334155;
+            --topic-bg: #f1f5f9;
+            --topic-border: #0f172a;
+            --framework-bg: #f8fafc;
+            --framework-border: #e2e8f0;
+
+            --lbl-hook: #7c3aed;
+            --lbl-point: #0284c7;
+            --lbl-story: #c026d3;
+            --lbl-drop: #4338ca;
         }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
@@ -27,6 +117,7 @@
             align-items: center;
             min-height: 100vh;
             box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .container {
             max-width: 850px;
@@ -34,17 +125,39 @@
             position: relative;
             box-sizing: border-box;
         }
+
+        /* Top Bar & Theme Toggle */
+        .top-bar {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+        }
+        .theme-toggle-btn {
+            background: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--card-border);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+        .theme-toggle-btn:hover {
+            background: var(--btn-secondary-bg);
+            color: var(--btn-secondary-text);
+        }
         
-        /* Professional Header Section */
+        /* Header Block */
         .app-header {
             text-align: center;
-            margin-bottom: 30px;
-            margin-top: 10px;
+            margin-bottom: 20px;
         }
         .app-header h1 {
             font-size: 28px;
             font-weight: 800;
-            color: var(--primary);
+            color: var(--text-main);
             margin: 0 0 6px 0;
             letter-spacing: -0.5px;
             text-transform: uppercase;
@@ -56,19 +169,47 @@
             font-weight: 500;
         }
 
+        /* Top Title Banner for Thought of the Day */
+        .thought-banner {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: #ffffff;
+            border-radius: 12px;
+            padding: 18px 24px;
+            margin-bottom: 24px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            border-left: 5px solid var(--btn-primary-bg);
+        }
+        .thought-label {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: #93c5fd;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .thought-text {
+            font-size: 16px;
+            font-weight: 600;
+            font-style: italic;
+            color: #f8fafc;
+            line-height: 1.5;
+        }
+
         .card {
             background: var(--card-bg);
             border-radius: 12px;
             padding: 28px;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
             margin-bottom: 24px;
-            border: 1px solid var(--border);
+            border: 1px solid var(--card-border);
             box-sizing: border-box;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         h2 { 
             margin-top: 0; 
             margin-bottom: 20px;
-            color: var(--primary); 
+            color: var(--text-main); 
             font-size: 18px; 
             font-weight: 700;
             letter-spacing: -0.3px;
@@ -88,37 +229,151 @@
         input, textarea, select {
             width: 100%;
             padding: 11px 14px;
-            border: 1px solid var(--border);
+            border: 1px solid var(--input-border);
             border-radius: 8px;
             font-size: 14px;
-            color: var(--text-main);
-            background-color: #ffffff;
+            color: var(--input-text);
+            background-color: var(--input-bg);
             box-sizing: border-box;
-            transition: border-color 0.15s ease;
+            transition: border-color 0.15s ease, background-color 0.3s ease;
         }
-        input:focus, select:focus {
+        input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: var(--text-muted);
+            border-color: var(--btn-primary-bg);
         }
         button {
-            background-color: var(--primary);
-            color: white;
+            background-color: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
             border: none;
             padding: 11px 22px;
             border-radius: 8px;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 14px;
             cursor: pointer;
             white-space: nowrap;
-            transition: background-color 0.15s ease;
+            transition: all 0.2s ease;
         }
-        button:hover { background-color: var(--primary-hover); }
-        button.success { background-color: var(--success); }
+        button:hover { opacity: 0.9; transform: translateY(-1px); }
+        button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        button.success { background-color: var(--success); color: #ffffff; }
         button.success:hover { opacity: 0.9; }
+        button.secondary { background-color: var(--btn-secondary-bg); color: var(--btn-secondary-text); }
+        button.secondary:hover { opacity: 0.9; }
+
+        /* Audio Pronunciation Buttons */
+        .audio-btn {
+            background: var(--btn-secondary-bg);
+            color: var(--btn-secondary-text);
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            padding: 3px 10px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-left: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: all 0.2s ease;
+        }
+        .audio-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        /* Floating Toastmasters Timer Widget */
+        .timer-sidebar {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            background: var(--card-bg);
+            border: 2px solid var(--card-border);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            text-align: center;
+            min-width: 140px;
+            transition: all 0.3s ease;
+        }
+        .timer {
+            font-size: 28px;
+            font-weight: 800;
+            font-family: -apple-system, BlinkMacSystemFont, monospace;
+            margin-bottom: 4px;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+            transition: color 0.3s ease;
+        }
+        .timer-status-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            background-color: var(--input-bg);
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+        
+        /* Toastmaster Light Signal States */
+        .timer-sidebar.signal-green {
+            background-color: var(--tm-green-bg);
+            border-color: var(--tm-green-border);
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
+        }
+        .timer-sidebar.signal-green .timer { color: var(--tm-green-text); }
+        .timer-sidebar.signal-green .timer-status-badge {
+            background-color: var(--tm-green-border);
+            color: #0f172a;
+        }
+
+        .timer-sidebar.signal-yellow {
+            background-color: var(--tm-yellow-bg);
+            border-color: var(--tm-yellow-border);
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+        }
+        .timer-sidebar.signal-yellow .timer { color: var(--tm-yellow-text); }
+        .timer-sidebar.signal-yellow .timer-status-badge {
+            background-color: var(--tm-yellow-border);
+            color: #0f172a;
+        }
+
+        .timer-sidebar.signal-red {
+            background-color: var(--tm-red-bg);
+            border-color: var(--tm-red-border);
+            box-shadow: 0 0 18px rgba(239, 68, 68, 0.5);
+        }
+        .timer-sidebar.signal-red .timer { color: var(--tm-red-text); }
+        .timer-sidebar.signal-red .timer-status-badge {
+            background-color: var(--tm-red-border);
+            color: #ffffff;
+        }
+
+        .timer-sidebar.signal-overtime {
+            background-color: #450a0a;
+            border-color: #dc2626;
+            animation: pulse-red 1s infinite alternate;
+        }
+        .timer-sidebar.signal-overtime .timer { color: #ffffff; }
+        .timer-sidebar.signal-overtime .timer-status-badge {
+            background-color: #dc2626;
+            color: #ffffff;
+        }
+
+        @keyframes pulse-red {
+            from { box-shadow: 0 0 10px #dc2626; }
+            to { box-shadow: 0 0 25px #dc2626; }
+        }
+
+        .timer-btn-group { display: flex; gap: 6px; }
         
         .topic-display {
-            background: #f1f5f9;
-            border-left: 4px solid var(--primary);
+            background: var(--topic-bg);
+            border-left: 4px solid var(--topic-border);
             padding: 18px;
             font-size: 16px;
             font-weight: 600;
@@ -126,62 +381,94 @@
             min-height: 40px;
             display: flex;
             align-items: center;
-            color: var(--primary);
+            color: var(--text-main);
             border-radius: 0 8px 8px 0;
             word-break: break-word;
         }
+        .speech-header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
         .speech-box {
-            background: #ffffff;
-            border: 1px solid var(--border);
+            background: var(--speech-bg);
+            border: 1px solid var(--speech-border);
             border-radius: 8px;
             padding: 24px;
-            margin-top: 20px;
-            white-space: pre-line;
             line-height: 1.7;
             font-size: 15px;
-            color: #334155;
+            color: var(--speech-text);
         }
-        
-        /* Floating Timer Widget */
-        .timer-sidebar {
-            position: fixed;
-            top: 24px;
-            right: 24px;
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 14px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-            z-index: 9999;
-            text-align: center;
-            min-width: 120px;
+
+        /* Word of the Day Dictionary Box */
+        .wod-box {
+            background: var(--wod-bg);
+            border: 1px solid var(--wod-border);
+            border-radius: 8px;
+            padding: 18px 20px;
+            margin-top: 16px;
+            color: var(--wod-text);
         }
-        .timer {
-            font-size: 26px;
+        .wod-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed var(--wod-border);
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .wod-title { font-size: 15px; font-weight: 700; color: var(--wod-title); }
+        .wod-theme { font-size: 13px; font-weight: 600; color: var(--btn-primary-bg); }
+        .wod-body p { margin: 8px 0; font-size: 14px; color: var(--wod-text); display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+        .wod-body strong { color: var(--text-main); font-weight: 700; }
+        .us-badge {
+            display: inline-block;
+            background: #0369a1;
+            color: #f0f9ff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
             font-weight: 700;
-            font-family: -apple-system, BlinkMacSystemFont, monospace;
-            margin-bottom: 8px;
-            color: var(--primary);
-            letter-spacing: -0.5px;
         }
-        
+        .uk-badge {
+            display: inline-block;
+            background: #4338ca;
+            color: #e0e7ff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: 700;
+        }
+        .hindi-badge {
+            display: inline-block;
+            background: #b45309;
+            color: #fef3c7;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
         .framework-box {
-            background: #f8fafc;
-            border: 1px solid var(--border);
+            background: var(--framework-bg);
+            border: 1px solid var(--framework-border);
             border-radius: 8px;
             padding: 18px;
             font-size: 14px;
             margin-top: 24px;
         }
-        .framework-box strong { color: var(--primary); font-weight: 700; }
+        .framework-box strong { color: var(--text-main); font-weight: 700; }
         .framework-box ul { margin: 8px 0 0 0; padding-left: 20px; }
-        .framework-box li { margin-bottom: 8px; color: #475569; }
-        
+        .framework-box li { margin-bottom: 8px; color: var(--text-muted); }
+
         /* Guide for Improvement Section */
         .guide-toggle-btn {
-            background: #f1f5f9;
-            color: var(--primary);
-            border: 1px solid var(--border);
+            background: var(--input-bg);
+            color: var(--text-main);
+            border: 1px solid var(--card-border);
             width: 100%;
             text-align: left;
             padding: 14px 18px;
@@ -194,18 +481,16 @@
             cursor: pointer;
             margin-top: 24px;
         }
-        .guide-toggle-btn:hover {
-            background: #e2e8f0;
-        }
+        .guide-toggle-btn:hover { background: var(--card-border); }
         .guide-content {
-            background: #ffffff;
-            border: 1px solid var(--border);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             border-top: none;
             border-radius: 0 0 8px 8px;
             padding: 20px;
             font-size: 14px;
             line-height: 1.6;
-            color: #334155;
+            color: var(--text-main);
         }
         .guide-grid {
             display: grid;
@@ -214,38 +499,30 @@
             margin-top: 10px;
         }
         .guide-card {
-            background: #f8fafc;
-            border: 1px solid var(--border);
+            background: var(--framework-bg);
+            border: 1px solid var(--card-border);
             border-radius: 6px;
             padding: 14px;
         }
-        .guide-card h4 {
-            margin: 0 0 6px 0;
-            color: var(--primary);
-            font-size: 14px;
-        }
-        .guide-card p {
-            margin: 0;
-            font-size: 13px;
-            color: #64748b;
-        }
+        .guide-card h4 { margin: 0 0 6px 0; color: var(--text-main); font-size: 14px; }
+        .guide-card p { margin: 0; font-size: 13px; color: var(--text-muted); }
 
         .hidden { display: none !important; }
         
-        /* Block Title Stylings */
-        .lbl-hook { color: #dc2626; font-weight: 700; font-size: 14px; display: block; margin-top: 20px; letter-spacing: 0.5px; }
-        .lbl-point { color: #2563eb; font-weight: 700; font-size: 14px; display: block; margin-top: 20px; letter-spacing: 0.5px; }
-        .lbl-story { color: #ea580c; font-weight: 700; font-size: 14px; display: block; margin-top: 20px; letter-spacing: 0.5px; }
-        .lbl-drop { color: #16a34a; font-weight: 700; font-size: 14px; display: block; margin-top: 20px; letter-spacing: 0.5px; }
-        .script-segment { display: block; margin-top: 6px; margin-bottom: 16px; color: #334155; font-size: 15px; }
+        /* Structural Block Title Stylings - Distinct Non-Timer Palette */
+        .lbl-hook { color: var(--lbl-hook); font-weight: 800; font-size: 14px; display: block; margin-top: 20px; letter-spacing: 0.5px; }
+        .lbl-point { color: var(--lbl-point); font-weight: 800; font-size: 14px; display: block; margin-top: 20px; letter-spacing: 0.5px; }
+        .lbl-story { color: var(--lbl-story); font-weight: 800; font-size: 14px; display: block; margin-top: 20px; letter-spacing: 0.5px; }
+        .lbl-drop { color: var(--lbl-drop); font-weight: 800; font-size: 14px; display: block; margin-top: 20px; letter-spacing: 0.5px; }
+        .lbl-hook:first-child { margin-top: 0; }
+        .script-segment { display: block; margin-top: 6px; margin-bottom: 16px; color: var(--speech-text); font-size: 15px; }
         
-        /* Premium Clean Footer */
         .footer {
             margin-top: 30px;
             margin-bottom: 25px;
             font-size: 11px;
             font-weight: 700;
-            color: #94a3b8;
+            color: var(--text-muted);
             letter-spacing: 1.5px;
             text-align: center;
             text-transform: uppercase;
@@ -263,22 +540,20 @@
                 justify-content: space-between;
                 width: 100%;
                 box-sizing: border-box;
-                min-width: 0;
                 padding: 12px 20px;
                 border-radius: 8px;
             }
-            .timer { margin-bottom: 0; font-size: 22px; }
-            #btnStartTimer { width: auto !important; min-width: 100px; padding: 8px 16px; }
+            .timer { margin-bottom: 0; font-size: 24px; }
+            .timer-status-badge { margin-bottom: 0; margin-left: 10px; margin-right: auto; }
+            .timer-btn-group { width: auto; }
+            #btnStartTimer, #btnResetTimer { padding: 8px 12px; font-size: 13px; }
         }
         
-        @media (min-width: 1150px) {
-            body { padding-right: 190px; }
-        }
+        @media (min-width: 1150px) { body { padding-right: 190px; } }
         
         @media (max-width: 640px) {
             .flex-group { flex-direction: column; gap: 8px; }
             .input-wrapper, input, select, button { width: 100% !important; }
-            span { text-align: center; margin: 4px 0; color: var(--text-muted); font-size: 13px; }
             .card { padding: 20px; }
             .guide-grid { grid-template-columns: 1fr; }
         }
@@ -286,23 +561,38 @@
 </head>
 <body>
 
-<!-- Sticky/Floating Executive Timer -->
+<!-- Floating Toastmasters Timer Widget -->
 <div class="timer-sidebar" id="timerWidget">
     <div id="timerDisplay" class="timer">00:00</div>
-    <button id="btnStartTimer" style="font-size: 13px; width: 100%;">🚀 Start</button>
+    <div id="timerStatus" class="timer-status-badge">⚪ Ready</div>
+    <div class="timer-btn-group">
+        <button id="btnStartTimer" style="font-size: 13px; flex: 1;">🚀 Start</button>
+        <button id="btnResetTimer" class="secondary" style="font-size: 13px; padding: 8px 12px;">🔄</button>
+    </div>
 </div>
 
 <div class="container">
+
+    <!-- Top Bar with Theme Toggle -->
+    <div class="top-bar">
+        <button id="btnToggleTheme" class="theme-toggle-btn">🌙 Dark Mode</button>
+    </div>
     
-    <!-- Top Brand Header Block -->
+    <!-- Top Brand Header -->
     <div class="app-header">
         <h1>Speech Design Hub</h1>
         <p>Toastmasters Executive Framework & Presentation Studio</p>
     </div>
 
-    <!-- Section 1: Authentication & Global Config -->
+    <!-- Thought of the Day Prominent Title Banner -->
+    <div id="thoughtBanner" class="thought-banner hidden">
+        <div class="thought-label">💡 THOUGHT OF THE DAY</div>
+        <div class="thought-text" id="displayThoughtHeader">"The secret of getting ahead is getting started." — Mark Twain</div>
+    </div>
+
+    <!-- Section 1: Authentication & Meeting Agenda Ingestion -->
     <div class="card">
-        <h2>1. Authentication & System Settings</h2>
+        <h2>1. Authentication & Agenda Ingestion</h2>
         <div class="flex-group">
             <div class="input-wrapper" style="flex: 2;">
                 <label class="form-label">Google Gemini API Configuration</label>
@@ -318,6 +608,50 @@
                 </select>
             </div>
         </div>
+
+        <!-- External File Agenda Attachment (Automatic Scan on File Choose) -->
+        <div class="flex-group" style="margin-top: 10px;">
+            <div class="input-wrapper">
+                <label class="form-label">📄 Attach Agenda File (Image / Flyer / Text) — <em>Scans Automatically Upon Selection</em></label>
+                <input type="file" id="agendaFileInput" accept="image/*,.txt">
+                <span id="fileScanStatus" style="font-size: 12px; font-weight: 600; color: #38bdf8; margin-top: 4px; display: block;"></span>
+            </div>
+        </div>
+
+        <!-- Meeting Agenda Ingestion Manual Fields -->
+        <div class="flex-group" style="margin-top: 14px; align-items: flex-end;">
+            <div class="input-wrapper">
+                <label class="form-label">Meeting Theme of the Day</label>
+                <input type="text" id="themeOfDay" placeholder="e.g. New Beginnings">
+            </div>
+            <div class="input-wrapper">
+                <label class="form-label">Word of the Day</label>
+                <input type="text" id="wordOfDay" placeholder="e.g. Resilient">
+            </div>
+            <button id="btnLookupWord" style="font-size: 13px; margin-bottom: 0;">🔍 Lookup Word Info</button>
+        </div>
+
+        <!-- Word & Context Dictionary Card -->
+        <div id="wodCard" class="wod-box hidden">
+            <div class="wod-header">
+                <span class="wod-title">📖 Word of the Day: <strong id="displayWodWord" style="color:var(--text-main);">-</strong></span>
+                <span class="wod-theme">Theme: <strong id="displayTheme" style="color:var(--btn-primary-bg);">-</strong></span>
+            </div>
+            <div class="wod-body">
+                <p><strong>Meaning:</strong> <span id="displayWodMeaning">-</span></p>
+                <p>
+                    <strong>American Accent (US):</strong> <span id="displayWodPronUs" class="us-badge">-</span>
+                    <button type="button" class="audio-btn" onclick="playAudioPronunciation('us')">🔊 Listen US</button>
+                </p>
+                <p>
+                    <strong>British Accent (UK):</strong> <span id="displayWodPronUk" class="uk-badge">-</span>
+                    <button type="button" class="audio-btn" onclick="playAudioPronunciation('uk')">🔊 Listen UK</button>
+                </p>
+                <p>
+                    <strong>Hindi Pronunciation (उच्चारण):</strong> <span id="displayWodPronHi" class="hindi-badge">-</span>
+                </p>
+            </div>
+        </div>
     </div>
 
     <!-- Section 2: Session Parameters & Prompt Delivery -->
@@ -327,9 +661,9 @@
             <div class="input-wrapper">
                 <label class="form-label">Presentation Profile Type</label>
                 <select id="speechMode">
-                    <option value="impromptu" selected>Table Topic (2.5 Minute Impromptu)</option>
-                    <option value="prepared7">Toastmasters Prepared Speech (7 Minute Session)</option>
-                    <option value="prepared">Prepared Keynote Speech (15 Minute Session)</option>
+                    <option value="impromptu" selected>Table Topic (1 to 2 Min Impromptu)</option>
+                    <option value="icebreaker">Toastmasters Ice Breaker (4 to 6 Min Session)</option>
+                    <option value="prepared7">Toastmasters Prepared Speech (5 to 7 Min Session)</option>
                 </select>
             </div>
         </div>
@@ -338,7 +672,7 @@
                 <label class="form-label">Option A: Artificial Intelligence Module</label>
                 <button id="btnAiTopic" class="success" style="width: 100%;">✨ Generate Script & Topic</button>
             </div>
-            <span style="align-self: center; font-weight: 600; padding-bottom: 12px; color: #cbd5e1;">OR</span>
+            <span style="align-self: center; font-weight: 600; padding-bottom: 12px; color: var(--text-muted);">OR</span>
             <div class="input-wrapper" style="flex: 2;">
                 <label class="form-label">Option B: Manual Topic Placement</label>
                 <input type="text" id="manualTopic" placeholder="Input assigned presentation topic summary...">
@@ -355,39 +689,47 @@
 
         <!-- System Script Deployment Terminal Box -->
         <div id="aiSpeechContainer" class="hidden">
-            <h3 style="margin-top: 25px; margin-bottom: 10px; color: var(--primary); font-size: 15px; font-weight: 700;">🎯 AI Structured Presentation Layout:</h3>
+            <div class="speech-header-bar">
+                <h3 style="margin: 0; color: var(--text-main); font-size: 15px; font-weight: 700;">🎯 AI Structured Presentation Layout:</h3>
+                <div style="display: flex; gap: 8px; align-items: center;">
+                    <button id="btnListenScript" class="secondary" style="padding: 6px 12px; font-size: 12px;">🔊 Listen Script</button>
+                    <button id="btnCopyScript" class="secondary" style="padding: 6px 12px; font-size: 12px;">📋 Copy Script</button>
+                </div>
+            </div>
             <div id="aiSpeechText" class="speech-box">Processing blueprint structure...</div>
         </div>
 
         <!-- Dynamic Structural Timelines -->
         <div class="framework-box" id="guideImpromptu">
-            <strong>💡 Structural Timing Parameters (2.5-Minute Impromptu):</strong>
+            <strong>💡 Toastmasters Official Signals (Table Topics: 1–2 Minutes):</strong>
             <ul>
-                <li><strong>0:00 - 0:10</strong> | <span style="color:#dc2626; font-weight:700;">The Hook:</span> Anchor attention, reference environmental context.</li>
-                <li><strong>0:10 - 0:30</strong> | <span style="color:#2563eb; font-weight:700;">The Point:</span> Clearly anchor a single thesis stance statement.</li>
-                <li><strong>0:30 - 1:45</strong> | <span style="color:#ea580c; font-weight:700;">The Story:</span> Core narrative case example detailing clear business relevance.</li>
-                <li><strong>1:45 - 2:00</strong> | <span style="color:#16a34a; font-weight:700;">The Drop:</span> Strong alignment call back to target question; formal close.</li>
-                <li><strong>2:00 - 2:30</strong> | <strong>Tolerance Margin:</strong> Finalize wrap-up protocols cleanly prior to hard stop.</li>
+                <li><strong>0:00 - 0:59</strong> | <span style="color:var(--text-muted); font-weight:700;">⚪ Initial Phase:</span> Focus on opening structure & establishing Hook.</li>
+                <li><strong>1:00 - 1:29</strong> | <span style="color:#22c55e; font-weight:700;">🟢 Green Card:</span> Minimum qualifying time reached (1 Minute).</li>
+                <li><strong>1:30 - 1:59</strong> | <span style="color:#eab308; font-weight:700;">🟡 Yellow Card:</span> Midpoint signal - prepare transition to conclusion (30s remaining).</li>
+                <li><strong>2:00 - 2:30</strong> | <span style="color:#ef4444; font-weight:700;">🔴 Red Card:</span> Target time reached (2 Minutes). 30-second grace window active.</li>
+                <li><strong>2:30+</strong> | <span style="color:#f87171; font-weight:700;">⚠️ Overtime:</span> Exceeds maximum allowance (Disqualification threshold).</li>
+            </ul>
+        </div>
+
+        <div class="framework-box hidden" id="guideIcebreaker">
+            <strong>💡 Toastmasters Official Signals (Ice Breaker Speech: 4–6 Minutes):</strong>
+            <ul>
+                <li><strong>0:00 - 3:59</strong> | <span style="color:var(--text-muted); font-weight:700;">⚪ Initial Phase:</span> Introduce yourself, background history, personal story, and goals.</li>
+                <li><strong>4:00 - 4:59</strong> | <span style="color:#22c55e; font-weight:700;">🟢 Green Card:</span> Minimum qualifying time reached (4 Minutes).</li>
+                <li><strong>5:00 - 5:59</strong> | <span style="color:#eab308; font-weight:700;">🟡 Yellow Card:</span> 1 Minute remaining - transition toward concluding message.</li>
+                <li><strong>6:00 - 6:30</strong> | <span style="color:#ef4444; font-weight:700;">🔴 Red Card:</span> Target time reached (6 Minutes). 30-second grace window active.</li>
+                <li><strong>6:30+</strong> | <span style="color:#f87171; font-weight:700;">⚠️ Overtime:</span> Exceeds maximum allowance (Disqualification threshold).</li>
             </ul>
         </div>
 
         <div class="framework-box hidden" id="guidePrepared7">
-            <strong>💡 Structural Timing Parameters (7-Minute Prepared Speech):</strong>
+            <strong>💡 Toastmasters Official Signals (7-Min Prepared Speech: 5–7 Minutes):</strong>
             <ul>
-                <li><strong>0:00 - 1:00</strong> | <span style="color:#dc2626; font-weight:700;">The Hook:</span> Grab attention, establish theme, define core message.</li>
-                <li><strong>1:00 - 2:30</strong> | <span style="color:#2563eb; font-weight:700;">The Point:</span> Introduce key arguments and main supporting concepts.</li>
-                <li><strong>2:30 - 5:30</strong> | <span style="color:#ea580c; font-weight:700;">The Story:</span> Deliver relatable personal stories or practical workplace scenarios.</li>
-                <li><strong>5:30 - 7:00</strong> | <span style="color:#16a34a; font-weight:700;">The Drop:</span> Summarize takeaways, issue call to action, end on strong concluding phrase.</li>
-            </ul>
-        </div>
-
-        <div class="framework-box hidden" id="guidePrepared">
-            <strong>💡 Strategic Presentation Parameters (15-Minute Keynote):</strong>
-            <ul>
-                <li><strong>00:00 - 02:00</strong> | <span style="color:#dc2626; font-weight:700;">The Hook:</span> Define landscape context, outline primary strategic problem scope.</li>
-                <li><strong>02:00 - 05:00</strong> | <span style="color:#2563eb; font-weight:700;">The Point:</span> Unpack tactical pillars, functional logic, and validation criteria.</li>
-                <li><strong>05:00 - 12:00</strong> | <span style="color:#ea580c; font-weight:700;">The Story:</span> Comprehensive operational history, project study, or data metrics deep dive.</li>
-                <li><strong>12:00 - 15:00</strong> | <span style="color:#16a34a; font-weight:700;">The Drop:</span> Consolidate critical milestones, request stakeholder action, open floor to Q&A.</li>
+                <li><strong>0:00 - 4:59</strong> | <span style="color:var(--text-muted); font-weight:700;">⚪ Initial Phase:</span> Deliver Hook, establish Point, start core narrative.</li>
+                <li><strong>5:00 - 5:59</strong> | <span style="color:#22c55e; font-weight:700;">🟢 Green Card:</span> Minimum qualifying time reached (5 Minutes).</li>
+                <li><strong>6:00 - 6:59</strong> | <span style="color:#eab308; font-weight:700;">🟡 Yellow Card:</span> 1 Minute remaining - begin summarizing key points.</li>
+                <li><strong>7:00 - 7:30</strong> | <span style="color:#ef4444; font-weight:700;">🔴 Red Card:</span> Target time reached (7 Minutes). 30-second grace window active.</li>
+                <li><strong>7:30+</strong> | <span style="color:#f87171; font-weight:700;">⚠️ Overtime:</span> Exceeds maximum allowance (Disqualification threshold).</li>
             </ul>
         </div>
 
@@ -402,32 +744,156 @@
             <div class="guide-grid">
                 <div class="guide-card">
                     <h4>1. Master the Strategic Pause</h4>
-                    <p>Instead of using filler words like "um," "ah," or "you know," stop completely for 1-2 seconds. A deliberate pause makes you sound authoritative and controlled.</p>
+                    <p>Instead of filler words ("um", "ah"), stop for 1-2 seconds. A deliberate pause makes you sound authoritative.</p>
                 </div>
                 <div class="guide-card">
                     <h4>2. Vocal Variety & Energy</h4>
-                    <p>Change your tone and speed across segments. Speak energetically during <strong>The Hook</strong>, slow down clearly for <strong>The Point</strong>, and use descriptive tone during <strong>The Story</strong>.</p>
+                    <p>Energetic during <strong>The Hook</strong>, steady and precise for <strong>The Point</strong>, descriptive for <strong>The Story</strong>.</p>
                 </div>
                 <div class="guide-card">
                     <h4>3. Anchor Eye Contact</h4>
-                    <p>Pick 3 virtual spots (left, center, right) in the room. Complete a single full thought or sentence while looking at one spot before shifting your focus.</p>
+                    <p>Pick 3 virtual spots (left, center, right). Deliver one complete thought before moving focus.</p>
                 </div>
                 <div class="guide-card">
                     <h4>4. Land <strong>The Drop</strong> Strong</h4>
-                    <p>Never end with "that's all I have." End on a clear key message or call to action, pause for emphasis, and conclude cleanly with "Thank you, Toastmaster."</p>
+                    <p>Never conclude with "that's all." End on a call to action and close cleanly with "Thank you, Toastmaster."</p>
                 </div>
             </div>
         </div>
 
     </div>
     
-    <!-- Explicit Credit Assignment Block -->
     <div class="footer">Developed by Rocky</div>
 </div>
 
 <script>
-    let timerInterval;
+    let timerInterval = null;
     let secondsElapsed = 0;
+    let isSpeakingScript = false;
+
+    // Theme Switcher Logic
+    const themeBtn = document.getElementById('btnToggleTheme');
+
+    function applyTheme(theme) {
+        if (theme === 'light') {
+            document.body.classList.add('light-theme');
+            themeBtn.textContent = '☀️ Light Mode';
+        } else {
+            document.body.classList.remove('light-theme');
+            themeBtn.textContent = '🌙 Dark Mode';
+        }
+        localStorage.setItem('app_theme', theme);
+    }
+
+    // Load saved theme or default to 'dark'
+    const savedTheme = localStorage.getItem('app_theme') || 'dark';
+    applyTheme(savedTheme);
+
+    themeBtn.addEventListener('click', () => {
+        const isLight = document.body.classList.contains('light-theme');
+        applyTheme(isLight ? 'dark' : 'light');
+    });
+
+    // Official Toastmasters Timing Rules (Seconds)
+    const TIMING_RULES = {
+        impromptu: { green: 60, yellow: 90, red: 120, grace: 150 },      // 1m, 1m30s, 2m, 2m30s
+        icebreaker: { green: 240, yellow: 300, red: 360, grace: 390 },   // 4m, 5m, 6m, 6m30s
+        prepared7: { green: 300, yellow: 360, red: 420, grace: 450 }     // 5m, 6m, 7m, 7m30s
+    };
+
+    function startTimer() {
+        if (timerInterval) clearInterval(timerInterval);
+        secondsElapsed = 0;
+        updateTimerDisplay();
+        const btn = document.getElementById('btnStartTimer');
+        btn.textContent = '⏹️ Stop';
+        timerInterval = setInterval(() => {
+            secondsElapsed++;
+            updateTimerDisplay();
+        }, 1000);
+    }
+
+    function stopTimer() {
+        if (timerInterval) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        }
+        const btn = document.getElementById('btnStartTimer');
+        btn.textContent = '🚀 Start';
+    }
+
+    // Text-to-Speech Audio Pronunciation Function
+    function speakWord(text, lang = 'en-US') {
+        if (!('speechSynthesis' in window)) {
+            alert('Text-to-speech audio is not supported in this browser.');
+            return;
+        }
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.rate = 0.85; // Clear natural speed
+        window.speechSynthesis.speak(utterance);
+    }
+
+    function playAudioPronunciation(accentType) {
+        const word = document.getElementById('displayWodWord').textContent.trim();
+        if (!word || word === '-') {
+            alert('Please lookup or scan a Word of the Day first.');
+            return;
+        }
+
+        if (accentType === 'us') {
+            speakWord(word, 'en-US');
+        } else if (accentType === 'uk') {
+            speakWord(word, 'en-GB');
+        }
+    }
+
+    // Full Script Speech Audio Listener synchronized with Timer
+    document.getElementById('btnListenScript').addEventListener('click', () => {
+        const btn = document.getElementById('btnListenScript');
+        if (!('speechSynthesis' in window)) {
+            alert('Text-to-speech audio is not supported in this browser.');
+            return;
+        }
+
+        if (isSpeakingScript || window.speechSynthesis.speaking) {
+            window.speechSynthesis.cancel();
+            stopTimer();
+            isSpeakingScript = false;
+            btn.textContent = '🔊 Listen Script';
+        } else {
+            const speechElement = document.getElementById('aiSpeechText');
+            const plainText = speechElement.innerText || speechElement.textContent;
+            if (!plainText || plainText.includes('Processing blueprint structure')) {
+                alert('No generated speech script available to listen to.');
+                return;
+            }
+
+            window.speechSynthesis.cancel();
+            startTimer(); // Automatically start timer when speech audio begins
+
+            const utterance = new SpeechSynthesisUtterance(plainText);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.9;
+
+            utterance.onend = () => {
+                stopTimer(); // Automatically stop timer when audio finishes
+                isSpeakingScript = false;
+                btn.textContent = '🔊 Listen Script';
+            };
+
+            utterance.onerror = () => {
+                stopTimer();
+                isSpeakingScript = false;
+                btn.textContent = '🔊 Listen Script';
+            };
+
+            isSpeakingScript = true;
+            btn.textContent = '⏹️ Stop Audio';
+            window.speechSynthesis.speak(utterance);
+        }
+    });
 
     // Toggle Improvement Guide visibility
     document.getElementById('btnToggleGuide').addEventListener('click', () => {
@@ -446,22 +912,22 @@
         const mode = e.target.value;
         const roomTitle = document.getElementById('roomTitle');
         const guideImpromptu = document.getElementById('guideImpromptu');
+        const guideIcebreaker = document.getElementById('guideIcebreaker');
         const guidePrepared7 = document.getElementById('guidePrepared7');
-        const guidePrepared = document.getElementById('guidePrepared');
         
         displayTopic("Awaiting initiation protocols. Select variables above...");
         document.getElementById('aiSpeechContainer').classList.add('hidden');
 
         guideImpromptu.classList.add('hidden');
+        guideIcebreaker.classList.add('hidden');
         guidePrepared7.classList.add('hidden');
-        guidePrepared.classList.add('hidden');
 
-        if (mode === 'prepared7') {
+        if (mode === 'icebreaker') {
+            roomTitle.textContent = "3. Active Session Dashboard (Ice Breaker Speech)";
+            guideIcebreaker.classList.remove('hidden');
+        } else if (mode === 'prepared7') {
             roomTitle.textContent = "3. Active Session Dashboard (7-Min Prepared Speech)";
             guidePrepared7.classList.remove('hidden');
-        } else if (mode === 'prepared') {
-            roomTitle.textContent = "3. Active Session Dashboard (15-Min Prepared Keynote)";
-            guidePrepared.classList.remove('hidden');
         } else {
             roomTitle.textContent = "3. Active Session Dashboard (Table Topics)";
             guideImpromptu.classList.remove('hidden');
@@ -476,30 +942,222 @@
         localStorage.setItem('gemini_api_key', apiKeyInput.value);
     });
 
-    async function callGemini(promptText) {
+    function getMeetingContextPrompt() {
+        const theme = document.getElementById('themeOfDay').value.trim();
+        const word = document.getElementById('wordOfDay').value.trim();
+        const thoughtBannerText = document.getElementById('displayThoughtHeader').textContent.trim();
+        
+        let context = "";
+        if (theme) context += ` Align the theme of the speech with meeting theme: "${theme}".`;
+        if (word) context += ` Naturally incorporate the Toastmasters Word of the Day: "${word}".`;
+        if (thoughtBannerText && !document.getElementById('thoughtBanner').classList.contains('hidden')) {
+            context += ` Optionally reference or weave in the Thought of the Day: "${thoughtBannerText}".`;
+        }
+        return context;
+    }
+
+    async function callGemini(promptText, base64Data = null, mimeType = null) {
         const key = apiKeyInput.value.trim();
         if (!key) {
-            alert('Provide valid Google Gemini Key in Section 1 to authorize pipeline request.');
+            alert('Please provide a valid Google Gemini API Key in Section 1.');
             return null;
         }
+
+        const parts = [];
+        if (base64Data && mimeType) {
+            parts.push({
+                inline_data: {
+                    mime_type: mimeType,
+                    data: base64Data
+                }
+            });
+        }
+        parts.push({ text: promptText });
         
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${key}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                contents: [{ parts: [{ text: promptText }] }]
-            })
-        });
-        
-        const data = await response.json();
-        return data.candidates[0].content.parts[0].text.trim();
+        try {
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${key}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ parts: parts }]
+                })
+            });
+
+            if (!response.ok) {
+                const errData = await response.json().catch(() => ({}));
+                throw new Error(errData.error?.message || `HTTP ${response.status} Error`);
+            }
+
+            const data = await response.json();
+            const resultText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+            
+            if (!resultText) {
+                throw new Error("No response content generated from API endpoint.");
+            }
+            
+            return resultText.trim();
+        } catch (error) {
+            console.error("Gemini API Error:", error);
+            alert(`API Error: ${error.message}`);
+            return null;
+        }
     }
 
     function cleanTextContent(text) {
         if(!text) return "";
         return text.replace(/\*\*/g, "")
+                   .replace(/###\s*/g, "")
                    .replace(/^\s*[\*\-]\s*/gm, "")
                    .trim();
+    }
+
+    // Lookup Word & Context Info via Gemini API
+    async function lookupWordInfo(wordToLookup, themeToLookup = "") {
+        if (!wordToLookup && !themeToLookup) return;
+        
+        const prompt = `Analyze this Toastmasters meeting context:
+        Word of the Day: "${wordToLookup}"
+        Theme of the Day: "${themeToLookup}"
+        
+        Provide:
+        1. Dictionary meaning for "${wordToLookup}"
+        2. American Accent (US) pronunciation phonetics
+        3. British Accent (UK) pronunciation phonetics
+        4. Hindi pronunciation in Devanagari script (e.g. रेजिलिएंट - Re-zil-i-ent)
+        
+        Respond STRICTLY in this JSON format without markdown code fences:
+        {
+          "word": "${wordToLookup}",
+          "theme": "${themeToLookup}",
+          "meaning": "Clear, concise dictionary definition",
+          "pronunciation_us": "American Pronunciation (e.g., /rɪˈzɪl.jənt/ or ri-ZIL-yuhnt)",
+          "pronunciation_uk": "British Pronunciation (e.g., /rɪˈzɪl.i.ənt/ or ri-ZIL-ee-uhnt)",
+          "pronunciation_hi": "Devanagari Script Pronunciation (e.g., रेजिलिएंट - Re-zil-i-ent)"
+        }`;
+
+        const rawRes = await callGemini(prompt);
+        if (!rawRes) return;
+
+        try {
+            const cleanJsonStr = rawRes.replace(/```json/g, "").replace(/```/g, "").trim();
+            const data = JSON.parse(cleanJsonStr);
+            
+            updateContextDisplay(data, wordToLookup, themeToLookup);
+        } catch (err) {
+            console.error("JSON parsing error:", err);
+            document.getElementById('displayWodWord').textContent = wordToLookup || "-";
+            document.getElementById('displayTheme').textContent = themeToLookup || "-";
+            document.getElementById('displayWodMeaning').textContent = rawRes;
+            document.getElementById('wodCard').classList.remove('hidden');
+        }
+    }
+
+    function updateContextDisplay(data, fallbackWord = "", fallbackTheme = "") {
+        const word = data.word || fallbackWord;
+        const theme = data.theme || fallbackTheme;
+        const thought = data.thought;
+
+        document.getElementById('displayWodWord').textContent = word || "-";
+        document.getElementById('displayTheme').textContent = theme || "-";
+        document.getElementById('displayWodMeaning').textContent = data.meaning || "-";
+        document.getElementById('displayWodPronUs').textContent = data.pronunciation_us || "-";
+        document.getElementById('displayWodPronUk').textContent = data.pronunciation_uk || "-";
+        document.getElementById('displayWodPronHi').textContent = data.pronunciation_hi || "-";
+
+        if (thought) {
+            document.getElementById('displayThoughtHeader').textContent = thought;
+            document.getElementById('thoughtBanner').classList.remove('hidden');
+        }
+
+        document.getElementById('wodCard').classList.remove('hidden');
+    }
+
+    document.getElementById('btnLookupWord').addEventListener('click', () => {
+        const word = document.getElementById('wordOfDay').value.trim();
+        const theme = document.getElementById('themeOfDay').value.trim();
+        lookupWordInfo(word, theme);
+    });
+
+    // Automatic Agenda Extraction Upon File Selection
+    document.getElementById('agendaFileInput').addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const fileStatus = document.getElementById('fileScanStatus');
+        fileStatus.textContent = "⏳ Scanning agenda file automatically...";
+        fileStatus.style.color = "var(--btn-primary-bg)";
+
+        const promptText = `Examine this Toastmasters meeting agenda document/flyer carefully.
+        Extract the following details:
+        1. "Theme of the Day"
+        2. "Word of the Day"
+        3. "Thought of the Day" (e.g. quotes or inspirational statements)
+        4. Dictionary meaning of the Word of the Day
+        5. American Accent (US) pronunciation phonetics of the Word of the Day
+        6. British Accent (UK) pronunciation phonetics of the Word of the Day
+        7. Hindi pronunciation in Devanagari script (e.g., रेजिलिएंट - Re-zil-i-ent)
+
+        Return STRICTLY valid JSON format without markdown code blocks:
+        {
+          "theme": "extracted theme of the day",
+          "word": "extracted word of the day",
+          "thought": "extracted thought of the day quote",
+          "meaning": "definition of the word of the day",
+          "pronunciation_us": "American accent pronunciation",
+          "pronunciation_uk": "British accent pronunciation",
+          "pronunciation_hi": "Hindi pronunciation in Devanagari"
+        }`;
+
+        try {
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = async (event) => {
+                    const base64Data = event.target.result.split(',')[1];
+                    const rawRes = await callGemini(promptText, base64Data, file.type);
+                    processAgendaExtraction(rawRes);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                const reader = new FileReader();
+                reader.onload = async (event) => {
+                    const fileText = event.target.result;
+                    const rawRes = await callGemini(`${promptText}\n\nAgenda Content:\n${fileText}`);
+                    processAgendaExtraction(rawRes);
+                };
+                reader.readAsText(file);
+            }
+        } catch (err) {
+            console.error(err);
+            fileStatus.textContent = "❌ Error scanning file.";
+            fileStatus.style.color = "var(--tm-red-text)";
+        }
+    });
+
+    function processAgendaExtraction(rawRes) {
+        const fileStatus = document.getElementById('fileScanStatus');
+
+        if (!rawRes) {
+            fileStatus.textContent = "❌ Failed to parse response.";
+            fileStatus.style.color = "var(--tm-red-text)";
+            return;
+        }
+
+        try {
+            const cleanJsonStr = rawRes.replace(/```json/g, "").replace(/```/g, "").trim();
+            const data = JSON.parse(cleanJsonStr);
+
+            if (data.theme) document.getElementById('themeOfDay').value = data.theme;
+            if (data.word) document.getElementById('wordOfDay').value = data.word;
+
+            updateContextDisplay(data);
+
+            fileStatus.textContent = "✅ Agenda scanned successfully!";
+            fileStatus.style.color = "var(--tm-green-border)";
+        } catch (err) {
+            console.error("Failed to parse agenda JSON:", err);
+            fileStatus.textContent = "✅ Agenda scanned. Context updated.";
+            fileStatus.style.color = "var(--tm-green-border)";
+        }
     }
 
     function parseAndDisplaySpeech(rawSpeechText) {
@@ -510,28 +1168,38 @@
 
         if (hookMatch && pointMatch && storyMatch && dropMatch) {
             let htmlContent = `
-                <span class="lbl-hook">🔴 THE HOOK</span>
+                <span class="lbl-hook">🟣 THE HOOK</span>
                 <span class="script-segment">${cleanTextContent(hookMatch[1])}</span>
                 
                 <span class="lbl-point">🔵 THE POINT</span>
                 <span class="script-segment">${cleanTextContent(pointMatch[1])}</span>
                 
-                <span class="lbl-story">🟠 THE STORY</span>
+                <span class="lbl-story">💖 THE STORY</span>
                 <span class="script-segment">${cleanTextContent(storyMatch[1])}</span>
                 
-                <span class="lbl-drop">🟢 THE DROP</span>
+                <span class="lbl-drop">🟤 THE DROP</span>
                 <span class="script-segment">${cleanTextContent(dropMatch[1])}</span>
             `;
             document.getElementById('aiSpeechText').innerHTML = htmlContent;
         } else {
-            document.getElementById('aiSpeechText').textContent = rawSpeechText;
+            document.getElementById('aiSpeechText').textContent = cleanTextContent(rawSpeechText);
         }
     }
+
+    document.getElementById('btnCopyScript').addEventListener('click', () => {
+        const speechElement = document.getElementById('aiSpeechText');
+        const plainText = speechElement.innerText || speechElement.textContent;
+        navigator.clipboard.writeText(plainText).then(() => {
+            const btn = document.getElementById('btnCopyScript');
+            btn.textContent = '✅ Copied!';
+            setTimeout(() => { btn.textContent = '📋 Copy Script'; }, 2000);
+        });
+    });
 
     document.getElementById('btnUseManual').addEventListener('click', async () => {
         const manualText = document.getElementById('manualTopic').value.trim();
         if (!manualText) {
-            alert('Please submit a prompt input query string in Option B field first.');
+            alert('Please input a topic summary in Option B field first.');
             return;
         }
 
@@ -543,42 +1211,37 @@
         const style = document.getElementById('topicStyle').value;
         
         let lengthInstruction = "";
-        if (mode === 'prepared7') {
-            lengthInstruction = "Create a complete, structured 7-minute Toastmasters speech draft layout with clear content flow, well-elaborated paragraphs, and actionable takeaways. DO NOT use markdown bold signs or raw bullet points anywhere in your output script text.";
-        } else if (mode === 'prepared') {
-            lengthInstruction = "Create a full, comprehensive 15-minute prepared speech presentation draft layout. Provide expanded ideas, thorough conversational paragraphs, and deep details. DO NOT use markdown bold signs or raw bullet points anywhere in your output script text.";
+        if (mode === 'icebreaker') {
+            lengthInstruction = "Create a complete 4-to-6 minute Toastmasters Ice Breaker speech draft introducing oneself, personal background, communication goals, and anecdotes. DO NOT use markdown bold signs or raw bullet points anywhere in your output script text.";
+        } else if (mode === 'prepared7') {
+            lengthInstruction = "Create a complete, structured 5-to-7 minute Toastmasters speech draft layout with clear content flow, well-elaborated paragraphs, and actionable takeaways. DO NOT use markdown bold signs or raw bullet points anywhere in your output script text.";
         } else {
-            lengthInstruction = "Write a complete, spoken example speech responding to this exact topic for a short 2-minute Toastmasters impromptu performance. DO NOT use markdown formatting symbols.";
+            lengthInstruction = "Write a complete, spoken example speech responding to this exact topic for a short 1-to-2 minute Toastmasters impromptu table topic performance. DO NOT use markdown formatting symbols.";
         }
 
         let langConstraint = style === "simple" ? 
-            "Use clear, simple English vocabulary that is highly fluent and formal, but uses direct, accessible language that is easy to speak clearly. Avoid complex idioms or long, difficult words." : 
+            "Use clear, simple English vocabulary that is highly fluent and formal, but uses direct, accessible language." : 
             "Use formal corporate workplace vocabulary.";
 
-        const promptText = `You are an expert public speaking coach. 
-        I am giving you an assigned topic: "${manualText}".
-        
+        const meetingContext = getMeetingContextPrompt();
+
+        const promptText = `You are an expert public speaking coach. Assigned topic: "${manualText}".
         ${lengthInstruction}
-        Target audience is a professional corporate workspace group.
-        ${langConstraint}
+        Target audience: corporate workspace. ${langConstraint} ${meetingContext}
         
-        You MUST write the response script separating it explicitly into 4 distinct structural blocks starting exactly with these labels:
+        Write 4 distinct blocks starting exactly with these labels:
         The Hook: 
         The Point: 
         The Story: 
         The Drop: 
 
-        Format your entire response exactly like this template, using three dashes (---) to divide the topic text from the speech parts:
-
+        Format:
         ${manualText}
         ---
-        The Hook: [Insert spoken script here]
-
-        The Point: [Insert spoken script here]
-
-        The Story: [Insert spoken script here]
-
-        The Drop: [Insert spoken script here]`;
+        The Hook: [Insert spoken script]
+        The Point: [Insert spoken script]
+        The Story: [Insert spoken script]
+        The Drop: [Insert spoken script]`;
 
         try {
             const rawText = await callGemini(promptText);
@@ -586,22 +1249,16 @@
 
             if (rawText.includes("---")) {
                 const parts = rawText.split("---");
-                const topic = parts[0].replace(/```/g, "").trim();
-                const speechPart = parts[1].trim();
-
-                displayTopic(topic);
-                parseAndDisplaySpeech(speechPart);
-                document.getElementById('aiSpeechContainer').classList.remove('hidden');
-                document.getElementById('manualTopic').value = '';
+                displayTopic(parts[0].replace(/```/g, "").trim());
+                parseAndDisplaySpeech(parts[1].trim());
             } else {
                 displayTopic(manualText);
                 document.getElementById('aiSpeechText').textContent = rawText;
-                document.getElementById('aiSpeechContainer').classList.remove('hidden');
-                document.getElementById('manualTopic').value = '';
             }
+            document.getElementById('aiSpeechContainer').classList.remove('hidden');
+            document.getElementById('manualTopic').value = '';
         } catch (error) {
             console.error(error);
-            alert('Failure compiling AI model output context data layout structural fields.');
         } finally {
             btn.textContent = 'Analyze Prompt';
             btn.disabled = false;
@@ -610,53 +1267,41 @@
 
     document.getElementById('btnAiTopic').addEventListener('click', async () => {
         const btn = document.getElementById('btnAiTopic');
-        btn.textContent = 'Generating Matrix...';
+        btn.textContent = 'Generating...';
         btn.disabled = true;
 
         const style = document.getElementById('topicStyle').value;
         const mode = document.getElementById('speechMode').value;
         
-        let languageConstraint = "";
-        if (style === "simple") {
-            languageConstraint = "Use simple, clean English words that are easy to understand, articulate, and deliver smoothly under pressure, yet keep the phrasing strictly formal, respectful, and appropriate for a workplace setting.";
-        } else {
-            languageConstraint = "Use regular vocabulary matching a polished corporate or business environment.";
-        }
-
         let lengthInstruction = "";
-        if (mode === 'prepared7') {
-            lengthInstruction = "generate a 7-minute Toastmasters formal prepared speech prompt and script outline. Provide well-developed paragraphs for a 7-minute timeline speech. Do not use asterisks or raw bullet points inside the sections.";
-        } else if (mode === 'prepared') {
-            lengthInstruction = "generate a comprehensive 15-minute formal prepared speech keynote prompt and script outline. Provide expanded text details to fulfill a professional 15-minute timeline presentation. Do not use asterisks or raw bullet points inside the sections.";
+        if (mode === 'icebreaker') {
+            lengthInstruction = "generate an Ice Breaker Toastmasters speech prompt and script outline (4 to 6 minutes). Focus on self-introduction, personal journey, key life experiences, and Toastmasters goals. Do not use asterisks or raw bullet points inside the sections.";
+        } else if (mode === 'prepared7') {
+            lengthInstruction = "generate a 5-to-7 minute Toastmasters formal prepared speech prompt and script outline. Provide well-developed paragraphs for a 5-to-7 minute speech. Do not use asterisks or raw bullet points inside the sections.";
         } else {
-            lengthInstruction = "write a full example speech responding directly and uniquely to that newly generated topic for a 2-minute Toastmasters table topic performance.";
+            lengthInstruction = "write a full example speech responding directly and uniquely to that newly generated topic for a 1-to-2 minute Toastmasters table topic performance.";
         }
 
-        const promptText = `You are an expert Toastmasters public speaking coach. 
-        First, generate a brand new random prompt matching this theme style: "${style}".
+        const meetingContext = getMeetingContextPrompt();
+
+        const promptText = `You are an expert Toastmasters coach. 
+        Generate a new topic for theme: "${style}".
+        Then, ${lengthInstruction}
+        DO NOT use markdown bold signs (asterisks) in script sections. ${meetingContext}
         
-        Second, ${lengthInstruction}
-        The presentation targets a corporate workspace audience. Keep the content fluid and clean. DO NOT use markdown bold signs like asterisks or dashes anywhere in your spoken script sections.
-        
-        ${languageConstraint}
-        
-        You MUST write the response separating it explicitly into 4 distinct blocks starting exactly with these labels:
+        Write 4 distinct blocks starting with:
         The Hook: 
         The Point: 
         The Story: 
         The Drop: 
 
-        Format your response exactly like this template, using three dashes (---) to divide the custom topic from the custom speech layout:
-
-        [Insert the newly generated topic prompt here]
+        Format:
+        [Generated topic prompt]
         ---
-        The Hook: [Insert spoken script text here]
-
-        The Point: [Insert spoken script text here]
-
-        The Story: [Insert spoken script text here]
-
-        The Drop: [Insert spoken script text here]`;
+        The Hook: [Insert spoken script]
+        The Point: [Insert spoken script]
+        The Story: [Insert spoken script]
+        The Drop: [Insert spoken script]`;
 
         try {
             const rawText = await callGemini(promptText);
@@ -664,81 +1309,60 @@
 
             if (rawText.includes("---")) {
                 const parts = rawText.split("---");
-                const topic = parts[0].replace(/```/g, "").trim();
-                const speechPart = parts[1].trim();
-
-                displayTopic(topic);
-                parseAndDisplaySpeech(speechPart);
-                document.getElementById('aiSpeechContainer').classList.remove('hidden');
+                displayTopic(parts[0].replace(/```/g, "").trim());
+                parseAndDisplaySpeech(parts[1].trim());
             } else {
                 displayTopic(rawText);
                 document.getElementById('aiSpeechText').textContent = rawText;
-                document.getElementById('aiSpeechContainer').classList.remove('hidden');
             }
+            document.getElementById('aiSpeechContainer').classList.remove('hidden');
         } catch (error) {
             console.error(error);
-            alert('Something went wrong communicating with the API endpoint.');
         } finally {
             btn.textContent = '✨ Generate Script & Topic';
             btn.disabled = false;
         }
     });
 
-    function displayTopic(text) {
-        document.getElementById('currentTopic').textContent = text;
-        clearInterval(timerInterval);
-        const timerDisplay = document.getElementById('timerDisplay');
-        timerDisplay.style.color = 'var(--text-main)';
-        timerDisplay.textContent = "00:00";
-        document.getElementById('btnStartTimer').textContent = '🚀 Start';
+    function resetTimer() {
+        stopTimer();
+        secondsElapsed = 0;
+        
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            isSpeakingScript = false;
+            const listenBtn = document.getElementById('btnListenScript');
+            if (listenBtn) listenBtn.textContent = '🔊 Listen Script';
+        }
+
+        const widget = document.getElementById('timerWidget');
+        const status = document.getElementById('timerStatus');
+        widget.className = 'timer-sidebar';
+        status.textContent = '⚪ Ready';
+        
+        document.getElementById('timerDisplay').textContent = "00:00";
     }
 
+    function displayTopic(text) {
+        document.getElementById('currentTopic').textContent = text;
+        resetTimer();
+    }
+
+    document.getElementById('btnResetTimer').addEventListener('click', resetTimer);
+
     document.getElementById('btnStartTimer').addEventListener('click', () => {
-        const timerDisplay = document.getElementById('timerDisplay');
         const btn = document.getElementById('btnStartTimer');
-        const mode = document.getElementById('speechMode').value;
 
         if (btn.textContent.includes('Start')) {
-            btn.textContent = '⏹️ Stop';
-            secondsElapsed = 0;
-            updateTimerDisplay();
-
-            timerInterval = setInterval(() => {
-                secondsElapsed++;
-                updateTimerDisplay();
-                
-                if (mode === 'impromptu') {
-                    // Impromptu (2.5 min): Green 1m (60s), Amber 1.5m (90s), Red 2m (120s)
-                    if (secondsElapsed >= 60 && secondsElapsed < 90) {
-                        timerDisplay.style.color = '#16a34a'; 
-                    } else if (secondsElapsed >= 90 && secondsElapsed < 120) {
-                        timerDisplay.style.color = '#ea580c'; 
-                    } else if (secondsElapsed >= 120) {
-                        timerDisplay.style.color = '#dc2626'; 
-                    }
-                } else if (mode === 'prepared7') {
-                    // 7-Min Speech: Green 5m (300s), Amber 6m (360s), Red 7m (420s)
-                    if (secondsElapsed >= 300 && secondsElapsed < 360) {
-                        timerDisplay.style.color = '#16a34a';
-                    } else if (secondsElapsed >= 360 && secondsElapsed < 420) {
-                        timerDisplay.style.color = '#ea580c';
-                    } else if (secondsElapsed >= 420) {
-                        timerDisplay.style.color = '#dc2626';
-                    }
-                } else {
-                    // 15-Min Keynote: Green 13m (780s), Amber 14m (840s), Red 15m (900s)
-                    if (secondsElapsed >= 780 && secondsElapsed < 840) {
-                        timerDisplay.style.color = '#16a34a';
-                    } else if (secondsElapsed >= 840 && secondsElapsed < 900) {
-                        timerDisplay.style.color = '#ea580c';
-                    } else if (secondsElapsed >= 900) {
-                        timerDisplay.style.color = '#dc2626';
-                    }
-                }
-            }, 1000);
+            startTimer();
         } else {
-            clearInterval(timerInterval);
-            btn.textContent = '🚀 Start';
+            stopTimer();
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                isSpeakingScript = false;
+                const listenBtn = document.getElementById('btnListenScript');
+                if (listenBtn) listenBtn.textContent = '🔊 Listen Script';
+            }
         }
     });
 
@@ -746,6 +1370,29 @@
         const mins = Math.floor(secondsElapsed / 60).toString().padStart(2, '0');
         const secs = (secondsElapsed % 60).toString().padStart(2, '0');
         document.getElementById('timerDisplay').textContent = `${mins}:${secs}`;
+
+        const mode = document.getElementById('speechMode').value;
+        const rule = TIMING_RULES[mode] || TIMING_RULES.impromptu;
+        const widget = document.getElementById('timerWidget');
+        const status = document.getElementById('timerStatus');
+
+        // Apply Toastmasters Timing Signal States
+        if (secondsElapsed >= rule.grace) {
+            widget.className = 'timer-sidebar signal-overtime';
+            status.textContent = '⚠️ OVERTIME';
+        } else if (secondsElapsed >= rule.red) {
+            widget.className = 'timer-sidebar signal-red';
+            status.textContent = '🔴 RED CARD';
+        } else if (secondsElapsed >= rule.yellow) {
+            widget.className = 'timer-sidebar signal-yellow';
+            status.textContent = '🟡 YELLOW CARD';
+        } else if (secondsElapsed >= rule.green) {
+            widget.className = 'timer-sidebar signal-green';
+            status.textContent = '🟢 GREEN CARD';
+        } else {
+            widget.className = 'timer-sidebar';
+            status.textContent = '⚪ In Progress';
+        }
     }
 </script>
 
