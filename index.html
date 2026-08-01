@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Speech Design Hub | Professional Presentation Suite</title>
     <style>
         /* CSS Variable System — Dark Mode as DEFAULT */
@@ -106,24 +106,37 @@
             --lbl-drop: #4338ca;
         }
 
+        /* Strict Horizontal Layout & Overflow Prevention */
+        *, *:before, *:after {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            margin: 0;
-            padding: 20px;
+            padding: 16px;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            box-sizing: border-box;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
+
         .container {
             max-width: 850px;
             width: 100%;
             position: relative;
             box-sizing: border-box;
+            overflow-x: hidden;
         }
 
         /* Top Bar & Theme Toggle */
@@ -131,6 +144,7 @@
             display: flex;
             justify-content: flex-end;
             margin-bottom: 10px;
+            width: 100%;
         }
         .theme-toggle-btn {
             background: var(--card-bg);
@@ -153,17 +167,19 @@
         .app-header {
             text-align: center;
             margin-bottom: 20px;
+            width: 100%;
         }
         .app-header h1 {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 800;
             color: var(--text-main);
             margin: 0 0 6px 0;
             letter-spacing: -0.5px;
             text-transform: uppercase;
+            word-wrap: break-word;
         }
         .app-header p {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-muted);
             margin: 0;
             font-weight: 500;
@@ -174,11 +190,14 @@
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             color: #ffffff;
             border-radius: 12px;
-            padding: 18px 24px;
-            margin-bottom: 24px;
+            padding: 16px 20px;
+            margin-bottom: 20px;
             text-align: center;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
             border-left: 5px solid var(--btn-primary-bg);
+            width: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         .thought-label {
             font-size: 11px;
@@ -189,7 +208,7 @@
             margin-bottom: 6px;
         }
         .thought-text {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             font-style: italic;
             color: #f8fafc;
@@ -199,22 +218,29 @@
         .card {
             background: var(--card-bg);
             border-radius: 12px;
-            padding: 28px;
+            padding: 24px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             border: 1px solid var(--card-border);
+            width: 100%;
             box-sizing: border-box;
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
         h2 { 
             margin-top: 0; 
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             color: var(--text-main); 
-            font-size: 18px; 
+            font-size: 17px; 
             font-weight: 700;
             letter-spacing: -0.3px;
         }
-        .flex-group { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+        .flex-group { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 12px; 
+            margin-bottom: 16px; 
+            width: 100%;
+        }
         .form-label {
             font-size: 13px;
             font-weight: 600;
@@ -224,10 +250,12 @@
         }
         .input-wrapper {
             flex: 1;
-            min-width: 200px;
+            min-width: 0;
+            width: 100%;
         }
         input, textarea, select {
             width: 100%;
+            max-width: 100%;
             padding: 11px 14px;
             border: 1px solid var(--input-border);
             border-radius: 8px;
@@ -245,13 +273,14 @@
             background-color: var(--btn-primary-bg);
             color: var(--btn-primary-text);
             border: none;
-            padding: 11px 22px;
+            padding: 11px 20px;
             border-radius: 8px;
             font-weight: 700;
             font-size: 14px;
             cursor: pointer;
             white-space: nowrap;
             transition: all 0.2s ease;
+            max-width: 100%;
         }
         button:hover { opacity: 0.9; transform: translateY(-1px); }
         button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
@@ -266,11 +295,10 @@
             color: var(--btn-secondary-text);
             border: 1px solid var(--card-border);
             border-radius: 6px;
-            padding: 3px 10px;
+            padding: 4px 10px;
             font-size: 12px;
             font-weight: 700;
             cursor: pointer;
-            margin-left: 8px;
             display: inline-flex;
             align-items: center;
             gap: 4px;
@@ -289,12 +317,13 @@
             background: var(--card-bg);
             border: 2px solid var(--card-border);
             border-radius: 12px;
-            padding: 16px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            padding: 14px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
             z-index: 9999;
             text-align: center;
             min-width: 140px;
             transition: all 0.3s ease;
+            box-sizing: border-box;
         }
         .timer {
             font-size: 28px;
@@ -374,32 +403,37 @@
         .topic-display {
             background: var(--topic-bg);
             border-left: 4px solid var(--topic-border);
-            padding: 18px;
-            font-size: 16px;
+            padding: 16px;
+            font-size: 15px;
             font-weight: 600;
-            margin: 20px 0;
+            margin: 18px 0;
             min-height: 40px;
             display: flex;
             align-items: center;
             color: var(--text-main);
             border-radius: 0 8px 8px 0;
-            word-break: break-word;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         .speech-header-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 25px;
+            margin-top: 20px;
             margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
         .speech-box {
             background: var(--speech-bg);
             border: 1px solid var(--speech-border);
             border-radius: 8px;
-            padding: 24px;
+            padding: 20px;
             line-height: 1.7;
             font-size: 15px;
             color: var(--speech-text);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         /* Word of the Day Dictionary Box */
@@ -407,9 +441,11 @@
             background: var(--wod-bg);
             border: 1px solid var(--wod-border);
             border-radius: 8px;
-            padding: 18px 20px;
+            padding: 16px;
             margin-top: 16px;
             color: var(--wod-text);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         .wod-header {
             display: flex;
@@ -456,9 +492,11 @@
             background: var(--framework-bg);
             border: 1px solid var(--framework-border);
             border-radius: 8px;
-            padding: 18px;
+            padding: 16px;
             font-size: 14px;
-            margin-top: 24px;
+            margin-top: 20px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         .framework-box strong { color: var(--text-main); font-weight: 700; }
         .framework-box ul { margin: 8px 0 0 0; padding-left: 20px; }
@@ -471,15 +509,15 @@
             border: 1px solid var(--card-border);
             width: 100%;
             text-align: left;
-            padding: 14px 18px;
-            font-size: 15px;
+            padding: 12px 16px;
+            font-size: 14px;
             font-weight: 700;
             border-radius: 8px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            margin-top: 24px;
+            margin-top: 20px;
         }
         .guide-toggle-btn:hover { background: var(--card-border); }
         .guide-content {
@@ -487,7 +525,7 @@
             border: 1px solid var(--card-border);
             border-top: none;
             border-radius: 0 0 8px 8px;
-            padding: 20px;
+            padding: 18px;
             font-size: 14px;
             line-height: 1.6;
             color: var(--text-main);
@@ -495,14 +533,14 @@
         .guide-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
+            gap: 14px;
             margin-top: 10px;
         }
         .guide-card {
             background: var(--framework-bg);
             border: 1px solid var(--card-border);
             border-radius: 6px;
-            padding: 14px;
+            padding: 12px;
         }
         .guide-card h4 { margin: 0 0 6px 0; color: var(--text-main); font-size: 14px; }
         .guide-card p { margin: 0; font-size: 13px; color: var(--text-muted); }
@@ -510,16 +548,16 @@
         .hidden { display: none !important; }
         
         /* Structural Block Title Stylings - Distinct Non-Timer Palette */
-        .lbl-hook { color: var(--lbl-hook); font-weight: 800; font-size: 14px; display: block; margin-top: 20px; letter-spacing: 0.5px; }
-        .lbl-point { color: var(--lbl-point); font-weight: 800; font-size: 14px; display: block; margin-top: 20px; letter-spacing: 0.5px; }
-        .lbl-story { color: var(--lbl-story); font-weight: 800; font-size: 14px; display: block; margin-top: 20px; letter-spacing: 0.5px; }
-        .lbl-drop { color: var(--lbl-drop); font-weight: 800; font-size: 14px; display: block; margin-top: 20px; letter-spacing: 0.5px; }
+        .lbl-hook { color: var(--lbl-hook); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
+        .lbl-point { color: var(--lbl-point); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
+        .lbl-story { color: var(--lbl-story); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
+        .lbl-drop { color: var(--lbl-drop); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
         .lbl-hook:first-child { margin-top: 0; }
-        .script-segment { display: block; margin-top: 6px; margin-bottom: 16px; color: var(--speech-text); font-size: 15px; }
+        .script-segment { display: block; margin-top: 6px; margin-bottom: 14px; color: var(--speech-text); font-size: 15px; }
         
         .footer {
-            margin-top: 30px;
-            margin-bottom: 25px;
+            margin-top: 24px;
+            margin-bottom: 80px; /* Padding for mobile fixed bottom timer bar */
             font-size: 11px;
             font-weight: 700;
             color: var(--text-muted);
@@ -528,23 +566,27 @@
             text-transform: uppercase;
         }
 
-        /* Responsive Breakpoints */
+        /* Responsive Breakpoints & Mobile Safety Fixes */
         @media (max-width: 1150px) {
             .timer-sidebar {
-                position: sticky;
-                top: 12px;
-                right: auto;
-                margin-bottom: 20px;
+                position: fixed;
+                bottom: 12px;
+                top: auto;
+                right: 12px;
+                left: 12px;
+                width: calc(100% - 24px);
+                margin: 0 auto;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+                border-radius: 12px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                width: 100%;
-                box-sizing: border-box;
-                padding: 12px 20px;
-                border-radius: 8px;
+                padding: 10px 16px;
+                z-index: 99999;
+                background: var(--card-bg);
             }
-            .timer { margin-bottom: 0; font-size: 24px; }
-            .timer-status-badge { margin-bottom: 0; margin-left: 10px; margin-right: auto; }
+            .timer { margin-bottom: 0; font-size: 22px; }
+            .timer-status-badge { margin-bottom: 0; margin-left: 8px; margin-right: auto; }
             .timer-btn-group { width: auto; }
             #btnStartTimer, #btnResetTimer { padding: 8px 12px; font-size: 13px; }
         }
@@ -552,16 +594,21 @@
         @media (min-width: 1150px) { body { padding-right: 190px; } }
         
         @media (max-width: 640px) {
-            .flex-group { flex-direction: column; gap: 8px; }
-            .input-wrapper, input, select, button { width: 100% !important; }
-            .card { padding: 20px; }
+            body { padding: 12px; }
+            .card { padding: 18px; }
+            .flex-group { flex-direction: column; gap: 10px; }
+            .input-wrapper { width: 100% !important; min-width: 100% !important; }
+            button, input, select, textarea { width: 100% !important; white-space: normal; }
             .guide-grid { grid-template-columns: 1fr; }
+            .speech-header-bar { flex-direction: column; align-items: flex-start; }
+            .speech-header-bar div { width: 100%; display: flex; justify-content: space-between; }
+            .audio-btn { width: auto !important; margin-left: auto; }
         }
     </style>
 </head>
 <body>
 
-<!-- Floating Toastmasters Timer Widget -->
+<!-- Floating Toastmasters Timer Widget (Fixed & Floating on Mobile & Desktop) -->
 <div class="timer-sidebar" id="timerWidget">
     <div id="timerDisplay" class="timer">00:00</div>
     <div id="timerStatus" class="timer-status-badge">⚪ Ready</div>
@@ -614,7 +661,7 @@
             <div class="input-wrapper">
                 <label class="form-label">📄 Attach Agenda File (Image / Flyer / Text) — <em>Scans Automatically Upon Selection</em></label>
                 <input type="file" id="agendaFileInput" accept="image/*,.txt">
-                <span id="fileScanStatus" style="font-size: 12px; font-weight: 600; color: #38bdf8; margin-top: 4px; display: block;"></span>
+                <span id="fileScanStatus" style="font-size: 12px; font-weight: 600; color: var(--btn-primary-bg); margin-top: 4px; display: block;"></span>
             </div>
         </div>
 
@@ -650,6 +697,14 @@
                 <p>
                     <strong>Hindi Pronunciation (उच्चारण):</strong> <span id="displayWodPronHi" class="hindi-badge">-</span>
                 </p>
+
+                <!-- Theme-Aligned Sentence Examples Section -->
+                <div id="wodExamples" style="margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--wod-border);">
+                    <strong>💡 Sentence Examples (Aligned with Theme):</strong>
+                    <ul id="displayWodExamples" style="margin: 6px 0 0 0; padding-left: 20px; font-size: 13px; color: var(--wod-text);">
+                        <li>-</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -657,7 +712,7 @@
     <!-- Section 2: Session Parameters & Prompt Delivery -->
     <div class="card">
         <h2>2. Session Settings & Topic Ingestion</h2>
-        <div class="flex-group" style="margin-bottom: 24px;">
+        <div class="flex-group" style="margin-bottom: 20px;">
             <div class="input-wrapper">
                 <label class="form-label">Presentation Profile Type</label>
                 <select id="speechMode">
@@ -1024,6 +1079,7 @@
         2. American Accent (US) pronunciation phonetics
         3. British Accent (UK) pronunciation phonetics
         4. Hindi pronunciation in Devanagari script (e.g. रेजिलिएंट - Re-zil-i-ent)
+        5. 2 to 3 practical example sentences using "${wordToLookup}" specifically aligned with the meeting theme "${themeToLookup}".
         
         Respond STRICTLY in this JSON format without markdown code fences:
         {
@@ -1032,7 +1088,11 @@
           "meaning": "Clear, concise dictionary definition",
           "pronunciation_us": "American Pronunciation (e.g., /rɪˈzɪl.jənt/ or ri-ZIL-yuhnt)",
           "pronunciation_uk": "British Pronunciation (e.g., /rɪˈzɪl.i.ənt/ or ri-ZIL-ee-uhnt)",
-          "pronunciation_hi": "Devanagari Script Pronunciation (e.g., रेजिलिएंट - Re-zil-i-ent)"
+          "pronunciation_hi": "Devanagari Script Pronunciation (e.g., रेजिलिएंट - Re-zil-i-ent)",
+          "examples": [
+            "First theme-aligned example sentence using ${wordToLookup}.",
+            "Second theme-aligned example sentence using ${wordToLookup}."
+          ]
         }`;
 
         const rawRes = await callGemini(prompt);
@@ -1069,6 +1129,16 @@
             document.getElementById('thoughtBanner').classList.remove('hidden');
         }
 
+        // Render Theme-Aligned Example Sentences
+        const examplesContainer = document.getElementById('displayWodExamples');
+        if (data.examples && Array.isArray(data.examples) && data.examples.length > 0) {
+            examplesContainer.innerHTML = data.examples.map(ex => `<li style="margin-bottom:6px;">${cleanTextContent(ex)}</li>`).join('');
+        } else if (typeof data.examples === 'string') {
+            examplesContainer.innerHTML = `<li style="margin-bottom:6px;">${cleanTextContent(data.examples)}</li>`;
+        } else {
+            examplesContainer.innerHTML = `<li>Embrace a <strong>${word || 'resilient'}</strong> mindset to overcome challenges and welcome new beginnings.</li>`;
+        }
+
         document.getElementById('wodCard').classList.remove('hidden');
     }
 
@@ -1096,6 +1166,7 @@
         5. American Accent (US) pronunciation phonetics of the Word of the Day
         6. British Accent (UK) pronunciation phonetics of the Word of the Day
         7. Hindi pronunciation in Devanagari script (e.g., रेजिलिएंट - Re-zil-i-ent)
+        8. 2 to 3 example sentences using the Word of the Day aligned with the extracted Theme of the Day.
 
         Return STRICTLY valid JSON format without markdown code blocks:
         {
@@ -1105,7 +1176,11 @@
           "meaning": "definition of the word of the day",
           "pronunciation_us": "American accent pronunciation",
           "pronunciation_uk": "British accent pronunciation",
-          "pronunciation_hi": "Hindi pronunciation in Devanagari"
+          "pronunciation_hi": "Hindi pronunciation in Devanagari",
+          "examples": [
+            "First theme-aligned example sentence.",
+            "Second theme-aligned example sentence."
+          ]
         }`;
 
         try {
