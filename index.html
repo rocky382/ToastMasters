@@ -71,9 +71,13 @@
             --lbl-vg-result: #34d399;
             --lbl-vg-ask: #f472b6;
 
-            --lbl-vg-steps: #60a5fa;
-            --lbl-vg-persp: #c084fc;
+            --lbl-vg-reason: #f59e0b;
+            --lbl-vg-example: #ec4899;
+            --lbl-vg-recap: #10b981;
+
             --lbl-vg-core: #f87171;
+            --lbl-vg-persp: #c084fc;
+            --lbl-vg-steps: #60a5fa;
         }
 
         /* Light Mode Theme Overrides */
@@ -130,15 +134,16 @@
             --lbl-vg-result: #059669;
             --lbl-vg-ask: #db2777;
 
-            --lbl-vg-steps: #2563eb;
-            --lbl-vg-persp: #7c3aed;
+            --lbl-vg-reason: #d97706;
+            --lbl-vg-example: #db2777;
+            --lbl-vg-recap: #059669;
+
             --lbl-vg-core: #dc2626;
+            --lbl-vg-persp: #7c3aed;
+            --lbl-vg-steps: #2563eb;
         }
 
-        /* Strict Horizontal Layout & Overflow Prevention */
-        *, *:before, *:after {
-            box-sizing: border-box;
-        }
+        *, *:before, *:after { box-sizing: border-box; }
 
         html, body {
             overflow-x: hidden;
@@ -168,7 +173,6 @@
             overflow-x: hidden;
         }
 
-        /* Top Bar & Theme Toggle */
         .top-bar {
             display: flex;
             justify-content: flex-end;
@@ -192,7 +196,6 @@
             color: var(--btn-secondary-text);
         }
         
-        /* Header Block */
         .app-header {
             text-align: center;
             margin-bottom: 20px;
@@ -251,7 +254,6 @@
             background: var(--framework-bg);
         }
 
-        /* Top Title Banner for Thought of the Day */
         .thought-banner {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             color: #ffffff;
@@ -355,7 +357,6 @@
         button.secondary { background-color: var(--btn-secondary-bg); color: var(--btn-secondary-text); }
         button.secondary:hover { opacity: 0.9; }
 
-        /* Audio Pronunciation Buttons */
         .audio-btn {
             background: var(--btn-secondary-bg);
             color: var(--btn-secondary-text);
@@ -370,12 +371,9 @@
             gap: 4px;
             transition: all 0.2s ease;
         }
-        .audio-btn:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
-        }
+        .audio-btn:hover { opacity: 0.9; transform: translateY(-1px); }
 
-        /* Floating Toastmasters Timer Widget */
+        /* Floating Timer Widget */
         .timer-sidebar {
             position: fixed;
             top: 24px;
@@ -414,7 +412,6 @@
             transition: all 0.3s ease;
         }
         
-        /* Toastmaster Light Signal States */
         .timer-sidebar.signal-green {
             background-color: var(--tm-green-bg);
             border-color: var(--tm-green-border);
@@ -502,7 +499,6 @@
             overflow-wrap: break-word;
         }
 
-        /* Word of the Day Dictionary Box */
         .wod-box {
             background: var(--wod-bg);
             border: 1px solid var(--wod-border);
@@ -552,7 +548,6 @@
         .framework-box ul { margin: 8px 0 0 0; padding-left: 20px; }
         .framework-box li { margin-bottom: 8px; color: var(--text-muted); }
 
-        /* Guide for Improvement Section */
         .guide-toggle-btn {
             background: var(--input-bg);
             color: var(--text-main);
@@ -609,11 +604,16 @@
         .lbl-vg-result-badge { color: var(--lbl-vg-result); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
         .lbl-vg-ask-badge { color: var(--lbl-vg-ask); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
 
-        .lbl-vg-steps-badge { color: var(--lbl-vg-steps); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
-        .lbl-vg-persp-badge { color: var(--lbl-vg-persp); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
-        .lbl-vg-core-badge { color: var(--lbl-vg-core); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
+        .lbl-vg-prep-p-badge { color: var(--lbl-vg-point); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
+        .lbl-vg-prep-r-badge { color: var(--lbl-vg-reason); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
+        .lbl-vg-prep-e-badge { color: var(--lbl-vg-example); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
+        .lbl-vg-prep-pr-badge { color: var(--lbl-vg-recap); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
 
-        .lbl-hook:first-child, .lbl-vg-point-badge:first-child, .lbl-vg-steps-badge:first-child { margin-top: 0; }
+        .lbl-vg-core-badge { color: var(--lbl-vg-core); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
+        .lbl-vg-persp-badge { color: var(--lbl-vg-persp); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
+        .lbl-vg-steps-badge { color: var(--lbl-vg-steps); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
+
+        .lbl-hook:first-child, .lbl-vg-point-badge:first-child, .lbl-vg-prep-p-badge:first-child, .lbl-vg-core-badge:first-child { margin-top: 0; }
         .script-segment { display: block; margin-top: 6px; margin-bottom: 14px; color: var(--speech-text); font-size: 15px; }
         
         .footer {
@@ -627,7 +627,6 @@
             text-transform: uppercase;
         }
 
-        /* Responsive Breakpoints & Mobile Safety Fixes */
         @media (max-width: 1150px) {
             .timer-sidebar {
                 position: fixed;
@@ -670,7 +669,7 @@
 </head>
 <body>
 
-<!-- Floating Toastmasters Timer Widget (Fixed & Floating on Mobile & Desktop) -->
+<!-- Floating Timer Widget -->
 <div class="timer-sidebar" id="timerWidget">
     <div id="timerDisplay" class="timer">00:00</div>
     <div id="timerStatus" class="timer-status-badge">⚪ Ready</div>
@@ -682,12 +681,10 @@
 
 <div class="container">
 
-    <!-- Top Bar with Theme Toggle -->
     <div class="top-bar">
         <button id="btnToggleTheme" class="theme-toggle-btn">🌙 Dark Mode</button>
     </div>
     
-    <!-- Top Brand Header -->
     <div class="app-header">
         <h1>Speech Design Hub</h1>
         <p>Toastmasters Executive Framework & Presentation Studio</p>
@@ -699,7 +696,7 @@
             🎙️ Toastmasters Suite
         </button>
         <button id="tabBtnVinhGiang" class="nav-tab-btn" onclick="switchMainTab('vinhgiang')">
-            🧠 Vinh Giang Studio (P.A.R.A. & 3-2-1)
+            🧠 Vinh Giang Studio (P.R.E.P. • P.A.R.A. • 3-2-1)
         </button>
     </div>
 
@@ -728,7 +725,6 @@
             </div>
         </div>
 
-        <!-- External File Agenda Attachment -->
         <div class="flex-group" style="margin-top: 10px;">
             <div class="input-wrapper">
                 <label class="form-label">📄 Attach Agenda File (Image / Flyer / Text) — <em>Scans Automatically Upon Selection</em></label>
@@ -737,7 +733,6 @@
             </div>
         </div>
 
-        <!-- Meeting Agenda Ingestion Manual Fields -->
         <div class="flex-group" style="margin-top: 14px; align-items: flex-end;">
             <div class="input-wrapper">
                 <label class="form-label">Meeting Theme of the Day</label>
@@ -750,7 +745,6 @@
             <button id="btnLookupWord" style="font-size: 13px; margin-bottom: 0;">🔍 Lookup Word Info</button>
         </div>
 
-        <!-- Word & Context Dictionary Card -->
         <div id="wodCard" class="wod-box hidden">
             <div class="wod-header">
                 <span class="wod-title">📖 Word of the Day: <strong id="displayWodWord" style="color:var(--text-main);">-</strong></span>
@@ -782,7 +776,6 @@
 
     <!-- ==================== TAB 1: TOASTMASTERS SUITE ==================== -->
     <div id="tabToastmastersContent">
-        <!-- Section 2: Session Parameters & Prompt Delivery -->
         <div class="card">
             <h2>2. Session Settings & Topic Ingestion</h2>
             <div class="flex-group" style="margin-bottom: 20px;">
@@ -810,13 +803,11 @@
             </div>
         </div>
 
-        <!-- Section 3: Active Dashboard Executive Control Room -->
         <div class="card" id="practiceArea">
             <h2 id="roomTitle">3. Active Session Dashboard (Table Topics)</h2>
             <span class="form-label" style="color: var(--text-muted);">Active Evaluation Objective:</span>
             <div id="currentTopic" class="topic-display">Awaiting initiation protocols. Select variables above...</div>
 
-            <!-- System Script Deployment Terminal Box -->
             <div id="aiSpeechContainer" class="hidden">
                 <div class="speech-header-bar">
                     <h3 style="margin: 0; color: var(--text-main); font-size: 15px; font-weight: 700;">🎯 AI Structured Presentation Layout:</h3>
@@ -828,7 +819,7 @@
                 <div id="aiSpeechText" class="speech-box">Processing blueprint structure...</div>
             </div>
 
-            <!-- Dynamic Structural Timelines -->
+            <!-- Dynamic Toastmasters Timing Framework Boxes -->
             <div class="framework-box" id="guideImpromptu">
                 <strong>💡 Toastmasters Official Signals (Table Topics: 1–2 Minutes):</strong>
                 <ul>
@@ -873,7 +864,6 @@
                 </ul>
             </div>
 
-            <!-- Toggleable User Delivery & Improvement Guide -->
             <button type="button" class="guide-toggle-btn" id="btnToggleGuide">
                 <span>📖 Executive Delivery & Improvement Guide</span>
                 <span id="guideArrow">▼</span>
@@ -906,38 +896,49 @@
     <!-- ==================== TAB 2: VINH GIANG STUDIO ==================== -->
     <div id="tabVinhGiangContent" class="hidden">
         <div class="card">
-            <h2>🧠 Vinh Giang Executive Studio (Stop Rambling & Synthesize)</h2>
+            <h2>🧠 Vinh Giang Executive Studio (Persuasion & Executive Delivery)</h2>
             <p style="font-size: 13px; color: var(--text-muted); margin-top: -10px; margin-bottom: 18px;">
-                Master executive presence, structured thinking, and voice modulation using Vinh Giang's signature frameworks.
+                Master concise executive answers, structured reasoning, and voice modulation with Vinh Giang's core models.
             </p>
 
             <div class="flex-group">
                 <div class="input-wrapper" style="flex: 1;">
                     <label class="form-label">Select Vinh Giang Framework</label>
                     <select id="vgFrameworkSelect">
-                        <option value="para" selected>P.A.R.A. Framework (Point • Action • Result • Ask) — 45s to 90s</option>
-                        <option value="321">3-2-1 Framework (3 Steps • 2 Perspectives • 1 Thing) — 1m to 2.5m</option>
+                        <option value="prep" selected>P.R.E.P. Framework (Point • Reason • Example • Point) — 45s to 90s</option>
+                        <option value="para">P.A.R.A. Framework (Point • Action • Result • Ask) — 45s to 90s</option>
+                        <option value="321">3-2-1 Framework (1 Thing • 2 Perspectives • 3 Steps) — 1m to 2.5m</option>
                     </select>
                 </div>
             </div>
 
-            <!-- Framework Quick Explainer Box -->
-            <div id="vgExplainerPara" class="framework-box" style="margin-top: 0; margin-bottom: 16px; border-left: 4px solid var(--btn-primary-bg);">
-                <strong>🎯 P.A.R.A. Framework Execution:</strong>
+            <!-- Framework Quick Explainer Boxes -->
+            <div id="vgExplainerPrep" class="framework-box" style="margin-top: 0; margin-bottom: 16px; border-left: 4px solid var(--btn-primary-bg);">
+                <strong>🎯 P.R.E.P. Framework Execution (Vinh Giang's Persuasion Model):</strong>
                 <ul>
-                    <li><strong style="color:var(--lbl-vg-point);">P — Point:</strong> Deliver the bottom-line upfront (BLUF). State your thesis in sentence one without rambling.</li>
-                    <li><strong style="color:var(--lbl-vg-action);">A — Action:</strong> Detail the tactical decision, execution, or recommendation that grounds your point.</li>
-                    <li><strong style="color:var(--lbl-vg-result);">R — Result:</strong> Quantify the outcome, impact, or evidence that proves your action worked.</li>
-                    <li><strong style="color:var(--lbl-vg-ask);">A — Ask:</strong> Hand the conversational baton back cleanly with a focused question or call to action.</li>
+                    <li><strong style="color:var(--lbl-vg-point);">P — Point:</strong> State your position or opinion directly and immediately in sentence one.</li>
+                    <li><strong style="color:var(--lbl-vg-reason);">R — Reason:</strong> Explain the logical rationale or evidence behind your point (*"Because..."*).</li>
+                    <li><strong style="color:var(--lbl-vg-example);">E — Example:</strong> Bring the concept alive with a concrete real-world story, case study, or scenario.</li>
+                    <li><strong style="color:var(--lbl-vg-recap);">P — Point (Restated):</strong> Reiterate your original point with finality and conviction to cement the idea.</li>
                 </ul>
             </div>
 
-            <div id="vgExplainer321" class="framework-box hidden" style="margin-top: 0; margin-bottom: 16px; border-left: 4px solid #c084fc;">
-                <strong>⚡ 3-2-1 Framework Execution:</strong>
+            <div id="vgExplainerPara" class="framework-box hidden" style="margin-top: 0; margin-bottom: 16px; border-left: 4px solid #34d399;">
+                <strong>🎯 P.A.R.A. Framework Execution (Overcoming Rambling):</strong>
                 <ul>
-                    <li><strong style="color:var(--lbl-vg-steps);">3 Steps (Process):</strong> Group the path forward into three sequential steps (e.g. Audit, Rebuild, Deploy).</li>
-                    <li><strong style="color:var(--lbl-vg-persp);">2 Perspectives (Nuance):</strong> Show executive range by highlighting two contrasting angles (e.g. Cultural vs. Systemic).</li>
-                    <li><strong style="color:var(--lbl-vg-core);">1 Thing (Anchor):</strong> End on the single non-negotiable priority that makes or breaks the entire initiative.</li>
+                    <li><strong style="color:var(--lbl-vg-point);">P — Point:</strong> Bottom-line upfront. Your thesis in the first 5 seconds.</li>
+                    <li><strong style="color:var(--lbl-vg-action);">A — Action:</strong> Detail the tactical decision, execution, or recommendation.</li>
+                    <li><strong style="color:var(--lbl-vg-result);">R — Result:</strong> Quantify the outcome, impact, or proof verifying the action.</li>
+                    <li><strong style="color:var(--lbl-vg-ask);">A — Ask:</strong> Hand the conversational baton back cleanly with a focused question or next step.</li>
+                </ul>
+            </div>
+
+            <div id="vgExplainer321" class="framework-box hidden" style="margin-top: 0; margin-bottom: 16px; border-left: 4px solid #f87171;">
+                <strong>⚡ 3-2-1 Inverted Delivery (Top-Down Executive Synthesis):</strong>
+                <ul>
+                    <li><strong style="color:var(--lbl-vg-core);">1 Core Thing (The Anchor):</strong> Open immediately with the single most critical priority or non-negotiable headline.</li>
+                    <li><strong style="color:var(--lbl-vg-persp);">2 Perspectives / Types (The Nuance):</strong> Present two contrasting angles or categories (e.g. Cultural vs. Systemic).</li>
+                    <li><strong style="color:var(--lbl-vg-steps);">3 Action Steps (The Process):</strong> Conclude with the concrete three-step sequential roadmap to execute it.</li>
                 </ul>
             </div>
 
@@ -949,7 +950,7 @@
                 <span style="align-self: center; font-weight: 600; padding-bottom: 12px; color: var(--text-muted);">OR</span>
                 <div class="input-wrapper" style="flex: 2;">
                     <label class="form-label">Option B: Boardroom / Meeting Question</label>
-                    <input type="text" id="vgManualPrompt" placeholder="e.g. Why is the quarterly target behind schedule?">
+                    <input type="text" id="vgManualPrompt" placeholder="e.g. Should we pivot our business model this quarter?">
                 </div>
                 <button id="btnVgAnalyzeManual" style="margin-bottom: 0;">Analyze & Structure</button>
             </div>
@@ -959,7 +960,7 @@
         <div class="card">
             <h2>Active Framework Delivery Hub</h2>
             <span class="form-label" style="color: var(--text-muted);">Framework Question / Challenge:</span>
-            <div id="vgCurrentTopic" class="topic-display">Select P.A.R.A. or 3-2-1 above to initiate speech architecture...</div>
+            <div id="vgCurrentTopic" class="topic-display">Select a framework above to initiate speech architecture...</div>
 
             <div id="vgSpeechContainer" class="hidden">
                 <div class="speech-header-bar">
@@ -972,7 +973,7 @@
                 <div id="vgSpeechText" class="speech-box">Processing blueprint structure...</div>
             </div>
 
-            <!-- Vinh Giang Vocal & Presence Coaching Cards -->
+            <!-- Coaching Guide Card -->
             <button type="button" class="guide-toggle-btn" id="btnToggleVgCoaching">
                 <span>🎙️ Vinh Giang's 5 Vocal Foundations & Presence System</span>
                 <span id="vgGuideArrow">▼</span>
@@ -983,27 +984,27 @@
                 <div class="guide-grid">
                     <div class="guide-card">
                         <h4>1. Rate of Speech (Pace)</h4>
-                        <p>Fast pace builds excitement and passion. Slow pace adds gravitas, authority, and emotional depth.</p>
+                        <p>Fast pace builds excitement and passion. Slow pace adds gravitas, authority, and emotional weight.</p>
                     </div>
                     <div class="guide-card">
                         <h4>2. Pitch & Melody</h4>
-                        <p>Avoid a flat, robotic monotone. Move between higher and lower vocal notes to keep ears leaning in.</p>
+                        <p>Avoid a flat, robotic monotone. Modulate between higher and lower notes to keep listeners engaged.</p>
                     </div>
                     <div class="guide-card">
                         <h4>3. Volume Control</h4>
-                        <p>High volume projects executive authority; dropping volume to a soft whisper pulls people in for intimacy.</p>
+                        <p>High volume commands room authority; lowering volume draws listeners in for an intimate insight.</p>
                     </div>
                     <div class="guide-card">
                         <h4>4. The Strategic Pause</h4>
-                        <p>Pauses kill filler words ("um," "ah"). They give your thoughts breathing room to truly land with the audience.</p>
+                        <p>Pauses kill filler words ("um," "ah"). They give your ideas room to land and build anticipation.</p>
                     </div>
                     <div class="guide-card">
                         <h4>5. Tonality (Emotional Color)</h4>
-                        <p>Infuse warmth, conviction, empathy, or excitement depending on what the room requires.</p>
+                        <p>Deliver words with genuine warmth, conviction, empathy, or playful energy depending on the room.</p>
                     </div>
                     <div class="guide-card">
                         <h4>The 4 Intentions</h4>
-                        <p>Identify what the listener wants: <strong>Information</strong> (facts), <strong>Connection</strong> (empathy), <strong>Peace</strong> (calm), or <strong>Fun</strong> (play).</p>
+                        <p>Match what your listener is seeking: <strong>Information</strong> (facts), <strong>Connection</strong> (empathy), <strong>Peace</strong> (harmony), or <strong>Fun</strong> (banter).</p>
                     </div>
                 </div>
             </div>
@@ -1019,7 +1020,6 @@
     let isSpeakingScript = false;
     let currentActiveTab = 'toastmasters';
 
-    // Main Tab Switching Logic
     function switchMainTab(tab) {
         currentActiveTab = tab;
         const btnTm = document.getElementById('tabBtnToastmasters');
@@ -1041,21 +1041,27 @@
         resetTimer();
     }
 
-    // Toggle Vinh Giang Framework Explainer
+    // Toggle Vinh Giang Framework Explainers
     document.getElementById('vgFrameworkSelect').addEventListener('change', (e) => {
         const val = e.target.value;
+        const expPrep = document.getElementById('vgExplainerPrep');
         const expPara = document.getElementById('vgExplainerPara');
         const exp321 = document.getElementById('vgExplainer321');
-        if (val === 'para') {
+
+        expPrep.classList.add('hidden');
+        expPara.classList.add('hidden');
+        exp321.classList.add('hidden');
+
+        if (val === 'prep') {
+            expPrep.classList.remove('hidden');
+        } else if (val === 'para') {
             expPara.classList.remove('hidden');
-            exp321.classList.add('hidden');
         } else {
-            expPara.classList.add('hidden');
             exp321.classList.remove('hidden');
         }
+        resetTimer();
     });
 
-    // Toggle Vinh Giang Coaching Guide
     document.getElementById('btnToggleVgCoaching').addEventListener('click', () => {
         const guide = document.getElementById('vgCoachingGuide');
         const arrow = document.getElementById('vgGuideArrow');
@@ -1068,7 +1074,7 @@
         }
     });
 
-    // 📱 iPhone Dynamic Canvas App Icon Generator
+    // iPhone Dynamic Canvas App Icon Generator
     function generateDynamicAppleTouchIcon() {
         try {
             const canvas = document.createElement('canvas');
@@ -1155,12 +1161,12 @@
 
     // Timing Rules (Seconds)
     const TIMING_RULES = {
-        impromptu: { green: 60, yellow: 90, red: 120, grace: 150 },      // 1m, 1m30s, 2m, 2m30s
-        icebreaker: { green: 240, yellow: 300, red: 360, grace: 390 },   // 4m, 5m, 6m, 6m30s
-        prepared7: { green: 300, yellow: 360, red: 420, grace: 450 },    // 5m, 6m, 7m, 7m30s
-        feedback: { green: 30, yellow: 45, red: 60, grace: 75 },         // 30s, 45s, 1m, 1m15s
-        vg_para: { green: 45, yellow: 60, red: 90, grace: 110 },         // 45s, 1m, 1m30s, 1m50s
-        vg_321: { green: 60, yellow: 90, red: 120, grace: 150 }          // 1m, 1m30s, 2m, 2m30s
+        impromptu: { green: 60, yellow: 90, red: 120, grace: 150 },
+        icebreaker: { green: 240, yellow: 300, red: 360, grace: 390 },
+        prepared7: { green: 300, yellow: 360, red: 420, grace: 450 },
+        feedback: { green: 30, yellow: 45, red: 60, grace: 75 },
+        vg_short: { green: 45, yellow: 60, red: 90, grace: 110 },       // PREP & PARA (45s–90s)
+        vg_321: { green: 60, yellow: 90, red: 120, grace: 150 }         // 3-2-1 Inverted (1m–2m)
     };
 
     function startTimer() {
@@ -1210,7 +1216,6 @@
         }
     }
 
-    // TTS Synchronizer Helper
     function handleListenScript(buttonId, textContainerId) {
         const btn = document.getElementById(buttonId);
         if (!('speechSynthesis' in window)) {
@@ -1578,9 +1583,32 @@
         }
     }
 
-    // Vinh Giang Framework Parser (P.A.R.A. & 3-2-1)
+    // Vinh Giang Framework Parser (PREP, PARA, 3-2-1 Inverted)
     function parseAndDisplayVgSpeech(rawSpeechText, frameworkType) {
-        if (frameworkType === 'para') {
+        if (frameworkType === 'prep') {
+            const pointMatch = rawSpeechText.match(/POINT:([\s\S]*?)(?=REASON:)/i);
+            const reasonMatch = rawSpeechText.match(/REASON:([\s\S]*?)(?=EXAMPLE:)/i);
+            const exampleMatch = rawSpeechText.match(/EXAMPLE:([\s\S]*?)(?=POINT RECAP:)/i);
+            const recapMatch = rawSpeechText.match(/POINT RECAP:([\s\S]*?)$/i);
+
+            if (pointMatch && reasonMatch && exampleMatch && recapMatch) {
+                let html = `
+                    <span class="lbl-vg-prep-p-badge">🔵 [P] POINT (Stance / Thesis Upfront)</span>
+                    <span class="script-segment">${cleanTextContent(pointMatch[1])}</span>
+
+                    <span class="lbl-vg-prep-r-badge">🟠 [R] REASON (The Logical "Why")</span>
+                    <span class="script-segment">${cleanTextContent(reasonMatch[1])}</span>
+
+                    <span class="lbl-vg-prep-e-badge">💖 [E] EXAMPLE (Vivid Real-World Illustration)</span>
+                    <span class="script-segment">${cleanTextContent(exampleMatch[1])}</span>
+
+                    <span class="lbl-vg-prep-pr-badge">🟢 [P] POINT RECAP (Conclusive Restatement)</span>
+                    <span class="script-segment">${cleanTextContent(recapMatch[1])}</span>
+                `;
+                document.getElementById('vgSpeechText').innerHTML = html;
+                return;
+            }
+        } else if (frameworkType === 'para') {
             const pointMatch = rawSpeechText.match(/POINT:([\s\S]*?)(?=ACTION:)/i);
             const actionMatch = rawSpeechText.match(/ACTION:([\s\S]*?)(?=RESULT:)/i);
             const resultMatch = rawSpeechText.match(/RESULT:([\s\S]*?)(?=ASK:)/i);
@@ -1604,20 +1632,21 @@
                 return;
             }
         } else if (frameworkType === '321') {
-            const stepsMatch = rawSpeechText.match(/THREE STEPS:([\s\S]*?)(?=TWO PERSPECTIVES:)/i);
-            const perspMatch = rawSpeechText.match(/TWO PERSPECTIVES:([\s\S]*?)(?=ONE THING:)/i);
-            const oneMatch = rawSpeechText.match(/ONE THING:([\s\S]*?)$/i);
+            // Updated Inverted Order: 1 Thing -> 2 Perspectives -> 3 Steps
+            const oneMatch = rawSpeechText.match(/ONE THING:([\s\S]*?)(?=TWO PERSPECTIVES:)/i);
+            const perspMatch = rawSpeechText.match(/TWO PERSPECTIVES:([\s\S]*?)(?=THREE STEPS:)/i);
+            const stepsMatch = rawSpeechText.match(/THREE STEPS:([\s\S]*?)$/i);
 
-            if (stepsMatch && perspMatch && oneMatch) {
+            if (oneMatch && perspMatch && stepsMatch) {
                 let html = `
-                    <span class="lbl-vg-steps-badge">🪜 3 STEPS (The Sequential Process)</span>
-                    <span class="script-segment">${cleanTextContent(stepsMatch[1])}</span>
+                    <span class="lbl-vg-core-badge">⭐ 1 CORE THING (The Anchor / Central Message)</span>
+                    <span class="script-segment">${cleanTextContent(oneMatch[1])}</span>
 
-                    <span class="lbl-vg-persp-badge">⚖️ 2 PERSPECTIVES (Strategic Nuance & Trade-offs)</span>
+                    <span class="lbl-vg-persp-badge">⚖️ 2 PERSPECTIVES (Strategic Nuance & Contrasts)</span>
                     <span class="script-segment">${cleanTextContent(perspMatch[1])}</span>
 
-                    <span class="lbl-vg-core-badge">⭐ 1 THING (The Core Priority Anchor)</span>
-                    <span class="script-segment">${cleanTextContent(oneMatch[1])}</span>
+                    <span class="lbl-vg-steps-badge">🪜 3 ACTION STEPS (The Execution Roadmap)</span>
+                    <span class="script-segment">${cleanTextContent(stepsMatch[1])}</span>
                 `;
                 document.getElementById('vgSpeechText').innerHTML = html;
                 return;
@@ -1626,7 +1655,6 @@
         document.getElementById('vgSpeechText').textContent = cleanTextContent(rawSpeechText);
     }
 
-    // Copy script handlers
     function setupCopyBtn(btnId, containerId) {
         document.getElementById(btnId).addEventListener('click', () => {
             const el = document.getElementById(containerId);
@@ -1782,7 +1810,27 @@
 
         let promptText = "";
 
-        if (framework === 'para') {
+        if (framework === 'prep') {
+            promptText = `You are Vinh Giang, international communication coach and master speaker.
+            ${userPrompt ? `Topic/Question: "${userPrompt}"` : `Generate a thought-provoking, controversial, or inspiring workplace/life topic based on tone: "${style}".`}
+            
+            Write an exemplary spoken response strictly following the P.R.E.P. Framework:
+            - POINT: Direct stance or conclusion stated immediately in sentence one.
+            - REASON: The logical "Why" or core argument backing your position.
+            - EXAMPLE: A vivid, concrete real-life story, case study, or relatable illustration.
+            - POINT RECAP: Conclusive restatement of your initial point delivered with finality and conviction.
+
+            Do NOT use asterisks or markdown bolding in script segments.
+            ${meetingContext}
+
+            Output STRICTLY in this format:
+            [Question / Challenge Statement]
+            ---
+            POINT: [Direct stance upfront]
+            REASON: [Logical rationale or why]
+            EXAMPLE: [Real-world story or illustration]
+            POINT RECAP: [Final conviction-driven restatement]`;
+        } else if (framework === 'para') {
             promptText = `You are Vinh Giang, international communication coach and master speaker.
             ${userPrompt ? `Topic/Challenge: "${userPrompt}"` : `Generate a challenging corporate or life impromptu question based on tone: "${style}".`}
             
@@ -1792,7 +1840,7 @@
             - RESULT: Measurable outcome, impact, or proof verifying the action.
             - ASK: Passing the baton back cleanly with a focused question or call to action.
 
-            Do NOT use asterisks or markdown bolding in the script segments.
+            Do NOT use asterisks or markdown bolding in script segments.
             ${meetingContext}
 
             Output STRICTLY in this format:
@@ -1803,23 +1851,24 @@
             RESULT: [Concrete outcome and impact]
             ASK: [Closing prompt/question passing the conversation back]`;
         } else {
+            // 3-2-1 Inverted Sequence: 1 Core Thing -> 2 Perspectives -> 3 Steps
             promptText = `You are Vinh Giang, international communication coach.
             ${userPrompt ? `Topic/Challenge: "${userPrompt}"` : `Generate a complex workplace leadership or strategic scenario based on tone: "${style}".`}
             
-            Write an exemplary spoken synthesis response strictly following the 3-2-1 Framework:
-            - THREE STEPS: Sequential 3-stage process (e.g. Audit, Rebuild, Deploy).
-            - TWO PERSPECTIVES: Two contrasting perspectives/trade-offs (e.g. Cultural vs. Systemic or Short-term vs. Long-term).
-            - ONE THING: The ultimate, non-negotiable core priority anchor.
+            Write an exemplary spoken executive synthesis response following the top-down 3-2-1 inverted delivery sequence:
+            - ONE THING: Start immediately with the single most important takeaway, non-negotiable anchor, or core objective.
+            - TWO PERSPECTIVES: Provide nuance by comparing two contrasting angles, types, or strategic trade-offs (e.g. Cultural vs. Systemic or Short-term vs. Long-term).
+            - THREE STEPS: Conclude with the concrete, sequential 3-step action roadmap to execute it.
 
-            Do NOT use asterisks or markdown bolding in the script segments.
+            Do NOT use asterisks or markdown bolding in script segments.
             ${meetingContext}
 
             Output STRICTLY in this format:
             [Question / Challenge Statement]
             ---
-            THREE STEPS: [The 3-stage process]
-            TWO PERSPECTIVES: [The 2 contrasting strategic lenses]
-            ONE THING: [The single most critical takeaway]`;
+            ONE THING: [The single most critical takeaway / core anchor]
+            TWO PERSPECTIVES: [The 2 contrasting strategic lenses or types]
+            THREE STEPS: [The 3-stage sequential action roadmap]`;
         }
 
         const rawText = await callGemini(promptText);
@@ -1835,9 +1884,11 @@
             parseAndDisplayVgSpeech(rawText, framework);
         }
 
-        document.getElementById('vgOutputTitle').textContent = framework === 'para' ? 
-            "🎯 Vinh Giang P.A.R.A. Speech Response:" : 
-            "⚡ Vinh Giang 3-2-1 Synthesis Speech Response:";
+        let titleStr = "🎯 Vinh Giang P.R.E.P. Persuasion Response:";
+        if (framework === 'para') titleStr = "🎯 Vinh Giang P.A.R.A. Execution Response:";
+        if (framework === '321') titleStr = "⚡ Vinh Giang 3-2-1 Inverted Executive Synthesis:";
+
+        document.getElementById('vgOutputTitle').textContent = titleStr;
         document.getElementById('vgSpeechContainer').classList.remove('hidden');
         resetTimer();
     }
@@ -1878,7 +1929,6 @@
         }
     });
 
-    // Timer Controls
     function resetTimer() {
         stopTimer();
         secondsElapsed = 0;
@@ -1932,7 +1982,7 @@
         let rule;
         if (currentActiveTab === 'vinhgiang') {
             const vgChoice = document.getElementById('vgFrameworkSelect').value;
-            rule = vgChoice === 'para' ? TIMING_RULES.vg_para : TIMING_RULES.vg_321;
+            rule = (vgChoice === 'prep' || vgChoice === 'para') ? TIMING_RULES.vg_short : TIMING_RULES.vg_321;
         } else {
             const mode = document.getElementById('speechMode').value;
             rule = TIMING_RULES[mode] || TIMING_RULES.impromptu;
