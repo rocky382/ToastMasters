@@ -59,11 +59,21 @@
             --framework-bg: #182232;
             --framework-border: #334155;
 
-            /* Distinct Non-Timer Script Block Headers */
+            /* Toastmasters Classic Headers */
             --lbl-hook: #a78bfa;
             --lbl-point: #38bdf8;
             --lbl-story: #f0abfc;
             --lbl-drop: #818cf8;
+
+            /* Vinh Giang Framework Highlights */
+            --lbl-vg-point: #38bdf8;
+            --lbl-vg-action: #fbbf24;
+            --lbl-vg-result: #34d399;
+            --lbl-vg-ask: #f472b6;
+
+            --lbl-vg-steps: #60a5fa;
+            --lbl-vg-persp: #c084fc;
+            --lbl-vg-core: #f87171;
         }
 
         /* Light Mode Theme Overrides */
@@ -114,6 +124,15 @@
             --lbl-point: #0284c7;
             --lbl-story: #c026d3;
             --lbl-drop: #4338ca;
+
+            --lbl-vg-point: #0284c7;
+            --lbl-vg-action: #d97706;
+            --lbl-vg-result: #059669;
+            --lbl-vg-ask: #db2777;
+
+            --lbl-vg-steps: #2563eb;
+            --lbl-vg-persp: #7c3aed;
+            --lbl-vg-core: #dc2626;
         }
 
         /* Strict Horizontal Layout & Overflow Prevention */
@@ -193,6 +212,43 @@
             color: var(--text-muted);
             margin: 0;
             font-weight: 500;
+        }
+
+        /* Top-Level Master Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            background: var(--card-bg);
+            padding: 6px;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+        }
+        .nav-tab-btn {
+            flex: 1;
+            padding: 12px 16px;
+            background: transparent;
+            color: var(--text-muted);
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+        .nav-tab-btn.active {
+            background: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+        }
+        .nav-tab-btn:hover:not(.active) {
+            color: var(--text-main);
+            background: var(--framework-bg);
         }
 
         /* Top Title Banner for Thought of the Day */
@@ -471,33 +527,16 @@
         .wod-theme { font-size: 13px; font-weight: 600; color: var(--btn-primary-bg); }
         .wod-body p { margin: 8px 0; font-size: 14px; color: var(--wod-text); display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
         .wod-body strong { color: var(--text-main); font-weight: 700; }
-        .us-badge {
+        .us-badge, .uk-badge, .hindi-badge {
             display: inline-block;
-            background: #0369a1;
-            color: #f0f9ff;
             padding: 2px 8px;
             border-radius: 4px;
             font-family: monospace;
             font-weight: 700;
         }
-        .uk-badge {
-            display: inline-block;
-            background: #4338ca;
-            color: #e0e7ff;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-family: monospace;
-            font-weight: 700;
-        }
-        .hindi-badge {
-            display: inline-block;
-            background: #b45309;
-            color: #fef3c7;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-family: monospace;
-            font-weight: 700;
-        }
+        .us-badge { background: #0369a1; color: #f0f9ff; }
+        .uk-badge { background: #4338ca; color: #e0e7ff; }
+        .hindi-badge { background: #b45309; color: #fef3c7; }
 
         .framework-box {
             background: var(--framework-bg);
@@ -558,17 +597,28 @@
 
         .hidden { display: none !important; }
         
-        /* Structural Block Title Stylings - Distinct Non-Timer Palette */
+        /* Toastmasters Script Block Headers */
         .lbl-hook { color: var(--lbl-hook); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
         .lbl-point { color: var(--lbl-point); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
         .lbl-story { color: var(--lbl-story); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
         .lbl-drop { color: var(--lbl-drop); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
-        .lbl-hook:first-child { margin-top: 0; }
+        
+        /* Vinh Giang Framework Block Headers */
+        .lbl-vg-point-badge { color: var(--lbl-vg-point); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
+        .lbl-vg-action-badge { color: var(--lbl-vg-action); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
+        .lbl-vg-result-badge { color: var(--lbl-vg-result); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
+        .lbl-vg-ask-badge { color: var(--lbl-vg-ask); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
+
+        .lbl-vg-steps-badge { color: var(--lbl-vg-steps); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
+        .lbl-vg-persp-badge { color: var(--lbl-vg-persp); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
+        .lbl-vg-core-badge { color: var(--lbl-vg-core); font-weight: 800; font-size: 14px; display: block; margin-top: 18px; letter-spacing: 0.5px; }
+
+        .lbl-hook:first-child, .lbl-vg-point-badge:first-child, .lbl-vg-steps-badge:first-child { margin-top: 0; }
         .script-segment { display: block; margin-top: 6px; margin-bottom: 14px; color: var(--speech-text); font-size: 15px; }
         
         .footer {
             margin-top: 24px;
-            margin-bottom: 80px; /* Padding for mobile fixed bottom timer bar */
+            margin-bottom: 80px;
             font-size: 11px;
             font-weight: 700;
             color: var(--text-muted);
@@ -614,6 +664,7 @@
             .speech-header-bar { flex-direction: column; align-items: flex-start; }
             .speech-header-bar div { width: 100%; display: flex; justify-content: space-between; }
             .audio-btn { width: auto !important; margin-left: auto; }
+            .nav-tab-btn { font-size: 12px; padding: 10px 8px; }
         }
     </style>
 </head>
@@ -642,13 +693,23 @@
         <p>Toastmasters Executive Framework & Presentation Studio</p>
     </div>
 
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs">
+        <button id="tabBtnToastmasters" class="nav-tab-btn active" onclick="switchMainTab('toastmasters')">
+            🎙️ Toastmasters Suite
+        </button>
+        <button id="tabBtnVinhGiang" class="nav-tab-btn" onclick="switchMainTab('vinhgiang')">
+            🧠 Vinh Giang Studio (P.A.R.A. & 3-2-1)
+        </button>
+    </div>
+
     <!-- Thought of the Day Prominent Title Banner -->
     <div id="thoughtBanner" class="thought-banner hidden">
         <div class="thought-label">💡 THOUGHT OF THE DAY</div>
         <div class="thought-text" id="displayThoughtHeader">"The secret of getting ahead is getting started." — Mark Twain</div>
     </div>
 
-    <!-- Section 1: Authentication & Meeting Agenda Ingestion -->
+    <!-- Universal Section 1: Authentication & Meeting Agenda Ingestion -->
     <div class="card">
         <h2>1. Authentication & Agenda Ingestion</h2>
         <div class="flex-group">
@@ -667,7 +728,7 @@
             </div>
         </div>
 
-        <!-- External File Agenda Attachment (Automatic Scan on File Choose) -->
+        <!-- External File Agenda Attachment -->
         <div class="flex-group" style="margin-top: 10px;">
             <div class="input-wrapper">
                 <label class="form-label">📄 Attach Agenda File (Image / Flyer / Text) — <em>Scans Automatically Upon Selection</em></label>
@@ -709,7 +770,6 @@
                     <strong>Hindi Pronunciation (उच्चारण):</strong> <span id="displayWodPronHi" class="hindi-badge">-</span>
                 </p>
 
-                <!-- Theme-Aligned Sentence Examples Section -->
                 <div id="wodExamples" style="margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--wod-border);">
                     <strong>💡 Sentence Examples (Aligned with Theme):</strong>
                     <ul id="displayWodExamples" style="margin: 6px 0 0 0; padding-left: 20px; font-size: 13px; color: var(--wod-text);">
@@ -720,125 +780,234 @@
         </div>
     </div>
 
-    <!-- Section 2: Session Parameters & Prompt Delivery -->
-    <div class="card">
-        <h2>2. Session Settings & Topic Ingestion</h2>
-        <div class="flex-group" style="margin-bottom: 20px;">
-            <div class="input-wrapper">
-                <label class="form-label">Presentation Profile Type</label>
-                <select id="speechMode">
-                    <option value="impromptu" selected>Table Topic (1 to 2 Min Impromptu)</option>
-                    <option value="icebreaker">Toastmasters Ice Breaker (4 to 6 Min Session)</option>
-                    <option value="prepared7">Toastmasters Prepared Speech (5 to 7 Min Session)</option>
-                    <option value="feedback">Toastmasters Audience Floor Feedback (30 Sec to 1 Min)</option>
-                </select>
+    <!-- ==================== TAB 1: TOASTMASTERS SUITE ==================== -->
+    <div id="tabToastmastersContent">
+        <!-- Section 2: Session Parameters & Prompt Delivery -->
+        <div class="card">
+            <h2>2. Session Settings & Topic Ingestion</h2>
+            <div class="flex-group" style="margin-bottom: 20px;">
+                <div class="input-wrapper">
+                    <label class="form-label">Presentation Profile Type</label>
+                    <select id="speechMode">
+                        <option value="impromptu" selected>Table Topic (1 to 2 Min Impromptu)</option>
+                        <option value="icebreaker">Toastmasters Ice Breaker (4 to 6 Min Session)</option>
+                        <option value="prepared7">Toastmasters Prepared Speech (5 to 7 Min Session)</option>
+                        <option value="feedback">Toastmasters Audience Floor Feedback (30 Sec to 1 Min)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="flex-group" style="align-items: flex-end;">
+                <div class="input-wrapper" style="flex: 1.5;">
+                    <label class="form-label">Option A: Artificial Intelligence Module</label>
+                    <button id="btnAiTopic" class="success" style="width: 100%;">✨ Generate Script & Topic</button>
+                </div>
+                <span style="align-self: center; font-weight: 600; padding-bottom: 12px; color: var(--text-muted);">OR</span>
+                <div class="input-wrapper" style="flex: 2;">
+                    <label class="form-label">Option B: Manual Topic Placement</label>
+                    <input type="text" id="manualTopic" placeholder="Input assigned presentation topic summary...">
+                </div>
+                <button id="btnUseManual" style="margin-bottom: 0;">Analyze Prompt</button>
             </div>
         </div>
-        <div class="flex-group" style="align-items: flex-end;">
-            <div class="input-wrapper" style="flex: 1.5;">
-                <label class="form-label">Option A: Artificial Intelligence Module</label>
-                <button id="btnAiTopic" class="success" style="width: 100%;">✨ Generate Script & Topic</button>
+
+        <!-- Section 3: Active Dashboard Executive Control Room -->
+        <div class="card" id="practiceArea">
+            <h2 id="roomTitle">3. Active Session Dashboard (Table Topics)</h2>
+            <span class="form-label" style="color: var(--text-muted);">Active Evaluation Objective:</span>
+            <div id="currentTopic" class="topic-display">Awaiting initiation protocols. Select variables above...</div>
+
+            <!-- System Script Deployment Terminal Box -->
+            <div id="aiSpeechContainer" class="hidden">
+                <div class="speech-header-bar">
+                    <h3 style="margin: 0; color: var(--text-main); font-size: 15px; font-weight: 700;">🎯 AI Structured Presentation Layout:</h3>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <button id="btnListenScript" class="secondary" style="padding: 6px 12px; font-size: 12px;">🔊 Listen Script</button>
+                        <button id="btnCopyScript" class="secondary" style="padding: 6px 12px; font-size: 12px;">📋 Copy Script</button>
+                    </div>
+                </div>
+                <div id="aiSpeechText" class="speech-box">Processing blueprint structure...</div>
             </div>
-            <span style="align-self: center; font-weight: 600; padding-bottom: 12px; color: var(--text-muted);">OR</span>
-            <div class="input-wrapper" style="flex: 2;">
-                <label class="form-label">Option B: Manual Topic Placement</label>
-                <input type="text" id="manualTopic" placeholder="Input assigned presentation topic summary...">
+
+            <!-- Dynamic Structural Timelines -->
+            <div class="framework-box" id="guideImpromptu">
+                <strong>💡 Toastmasters Official Signals (Table Topics: 1–2 Minutes):</strong>
+                <ul>
+                    <li><strong>0:00 - 0:59</strong> | <span style="color:var(--text-muted); font-weight:700;">⚪ Initial Phase:</span> Focus on opening structure & establishing Hook.</li>
+                    <li><strong>1:00 - 1:29</strong> | <span style="color:#22c55e; font-weight:700;">🟢 Green Card:</span> Minimum qualifying time reached (1 Minute).</li>
+                    <li><strong>1:30 - 1:59</strong> | <span style="color:#eab308; font-weight:700;">🟡 Yellow Card:</span> Midpoint signal - prepare transition to conclusion (30s remaining).</li>
+                    <li><strong>2:00 - 2:30</strong> | <span style="color:#ef4444; font-weight:700;">🔴 Red Card:</span> Target time reached (2 Minutes). 30-second grace window active.</li>
+                    <li><strong>2:30+</strong> | <span style="color:#f87171; font-weight:700;">⚠️ Overtime:</span> Exceeds maximum allowance (Disqualification threshold).</li>
+                </ul>
             </div>
-            <button id="btnUseManual" style="margin-bottom: 0;">Analyze Prompt</button>
+
+            <div class="framework-box hidden" id="guideIcebreaker">
+                <strong>💡 Toastmasters Official Signals (Ice Breaker Speech: 4–6 Minutes):</strong>
+                <ul>
+                    <li><strong>0:00 - 3:59</strong> | <span style="color:var(--text-muted); font-weight:700;">⚪ Initial Phase:</span> Introduce yourself, background history, personal story, and goals.</li>
+                    <li><strong>4:00 - 4:59</strong> | <span style="color:#22c55e; font-weight:700;">🟢 Green Card:</span> Minimum qualifying time reached (4 Minutes).</li>
+                    <li><strong>5:00 - 5:59</strong> | <span style="color:#eab308; font-weight:700;">🟡 Yellow Card:</span> 1 Minute remaining - transition toward concluding message.</li>
+                    <li><strong>6:00 - 6:30</strong> | <span style="color:#ef4444; font-weight:700;">🔴 Red Card:</span> Target time reached (6 Minutes). 30-second grace window active.</li>
+                    <li><strong>6:30+</strong> | <span style="color:#f87171; font-weight:700;">⚠️ Overtime:</span> Exceeds maximum allowance (Disqualification threshold).</li>
+                </ul>
+            </div>
+
+            <div class="framework-box hidden" id="guidePrepared7">
+                <strong>💡 Toastmasters Official Signals (7-Min Prepared Speech: 5–7 Minutes):</strong>
+                <ul>
+                    <li><strong>0:00 - 4:59</strong> | <span style="color:var(--text-muted); font-weight:700;">⚪ Initial Phase:</span> Deliver Hook, establish Point, start core narrative.</li>
+                    <li><strong>5:00 - 5:59</strong> | <span style="color:#22c55e; font-weight:700;">🟢 Green Card:</span> Minimum qualifying time reached (5 Minutes).</li>
+                    <li><strong>6:00 - 6:59</strong> | <span style="color:#eab308; font-weight:700;">🟡 Yellow Card:</span> 1 Minute remaining - begin summarizing key points.</li>
+                    <li><strong>7:00 - 7:30</strong> | <span style="color:#ef4444; font-weight:700;">🔴 Red Card:</span> Target time reached (7 Minutes). 30-second grace window active.</li>
+                    <li><strong>7:30+</strong> | <span style="color:#f87171; font-weight:700;">⚠️ Overtime:</span> Exceeds maximum allowance (Disqualification threshold).</li>
+                </ul>
+            </div>
+
+            <div class="framework-box hidden" id="guideFeedback">
+                <strong>💡 Toastmasters Official Signals (Audience Floor Feedback: 30 Sec – 1 Minute):</strong>
+                <ul>
+                    <li><strong>0:00 - 0:29</strong> | <span style="color:var(--text-muted); font-weight:700;">⚪ Opening Appreciation:</span> Thank the Toastmaster/Leader, state meeting impression & reference Theme.</li>
+                    <li><strong>0:30 - 0:44</strong> | <span style="color:#22c55e; font-weight:700;">🟢 Green Card:</span> Minimum time reached (30 Seconds). Commend a specific speaker & use Word of the Day.</li>
+                    <li><strong>0:45 - 0:59</strong> | <span style="color:#eab308; font-weight:700;">🟡 Yellow Card:</span> 15 seconds remaining - wrap up key reflection point.</li>
+                    <li><strong>1:00 - 1:15</strong> | <span style="color:#ef4444; font-weight:700;">🔴 Red Card:</span> Target limit reached (1 Minute). Deliver inspiring closing statement.</li>
+                    <li><strong>1:15+</strong> | <span style="color:#f87171; font-weight:700;">⚠️ Overtime:</span> Exceeds 15-second grace window threshold.</li>
+                </ul>
+            </div>
+
+            <!-- Toggleable User Delivery & Improvement Guide -->
+            <button type="button" class="guide-toggle-btn" id="btnToggleGuide">
+                <span>📖 Executive Delivery & Improvement Guide</span>
+                <span id="guideArrow">▼</span>
+            </button>
+            
+            <div class="guide-content hidden" id="improvementGuide">
+                <p style="margin-top: 0;">Use these expert Toastmasters techniques to elevate your delivery during practice:</p>
+                <div class="guide-grid">
+                    <div class="guide-card">
+                        <h4>1. Master the Strategic Pause</h4>
+                        <p>Instead of filler words ("um", "ah"), stop for 1-2 seconds. A deliberate pause makes you sound authoritative.</p>
+                    </div>
+                    <div class="guide-card">
+                        <h4>2. Vocal Variety & Energy</h4>
+                        <p>Energetic during <strong>The Hook</strong>, steady and precise for <strong>The Point</strong>, descriptive for <strong>The Story</strong>.</p>
+                    </div>
+                    <div class="guide-card">
+                        <h4>3. Anchor Eye Contact</h4>
+                        <p>Pick 3 virtual spots (left, center, right). Deliver one complete thought before moving focus.</p>
+                    </div>
+                    <div class="guide-card">
+                        <h4>4. Land <strong>The Drop</strong> Strong</h4>
+                        <p>Never conclude with "that's all." End on a call to action and close cleanly with "Thank you, Toastmaster."</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Section 3: Active Dashboard Executive Control Room -->
-    <div class="card" id="practiceArea">
-        <h2 id="roomTitle">3. Active Session Dashboard (Table Topics)</h2>
-        <span class="form-label" style="color: var(--text-muted);">Active Evaluation Objective:</span>
-        <div id="currentTopic" class="topic-display">Awaiting initiation protocols. Select variables above...</div>
+    <!-- ==================== TAB 2: VINH GIANG STUDIO ==================== -->
+    <div id="tabVinhGiangContent" class="hidden">
+        <div class="card">
+            <h2>🧠 Vinh Giang Executive Studio (Stop Rambling & Synthesize)</h2>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: -10px; margin-bottom: 18px;">
+                Master executive presence, structured thinking, and voice modulation using Vinh Giang's signature frameworks.
+            </p>
 
-        <!-- System Script Deployment Terminal Box -->
-        <div id="aiSpeechContainer" class="hidden">
-            <div class="speech-header-bar">
-                <h3 style="margin: 0; color: var(--text-main); font-size: 15px; font-weight: 700;">🎯 AI Structured Presentation Layout:</h3>
-                <div style="display: flex; gap: 8px; align-items: center;">
-                    <button id="btnListenScript" class="secondary" style="padding: 6px 12px; font-size: 12px;">🔊 Listen Script</button>
-                    <button id="btnCopyScript" class="secondary" style="padding: 6px 12px; font-size: 12px;">📋 Copy Script</button>
+            <div class="flex-group">
+                <div class="input-wrapper" style="flex: 1;">
+                    <label class="form-label">Select Vinh Giang Framework</label>
+                    <select id="vgFrameworkSelect">
+                        <option value="para" selected>P.A.R.A. Framework (Point • Action • Result • Ask) — 45s to 90s</option>
+                        <option value="321">3-2-1 Framework (3 Steps • 2 Perspectives • 1 Thing) — 1m to 2.5m</option>
+                    </select>
                 </div>
             </div>
-            <div id="aiSpeechText" class="speech-box">Processing blueprint structure...</div>
-        </div>
 
-        <!-- Dynamic Structural Timelines -->
-        <div class="framework-box" id="guideImpromptu">
-            <strong>💡 Toastmasters Official Signals (Table Topics: 1–2 Minutes):</strong>
-            <ul>
-                <li><strong>0:00 - 0:59</strong> | <span style="color:var(--text-muted); font-weight:700;">⚪ Initial Phase:</span> Focus on opening structure & establishing Hook.</li>
-                <li><strong>1:00 - 1:29</strong> | <span style="color:#22c55e; font-weight:700;">🟢 Green Card:</span> Minimum qualifying time reached (1 Minute).</li>
-                <li><strong>1:30 - 1:59</strong> | <span style="color:#eab308; font-weight:700;">🟡 Yellow Card:</span> Midpoint signal - prepare transition to conclusion (30s remaining).</li>
-                <li><strong>2:00 - 2:30</strong> | <span style="color:#ef4444; font-weight:700;">🔴 Red Card:</span> Target time reached (2 Minutes). 30-second grace window active.</li>
-                <li><strong>2:30+</strong> | <span style="color:#f87171; font-weight:700;">⚠️ Overtime:</span> Exceeds maximum allowance (Disqualification threshold).</li>
-            </ul>
-        </div>
+            <!-- Framework Quick Explainer Box -->
+            <div id="vgExplainerPara" class="framework-box" style="margin-top: 0; margin-bottom: 16px; border-left: 4px solid var(--btn-primary-bg);">
+                <strong>🎯 P.A.R.A. Framework Execution:</strong>
+                <ul>
+                    <li><strong style="color:var(--lbl-vg-point);">P — Point:</strong> Deliver the bottom-line upfront (BLUF). State your thesis in sentence one without rambling.</li>
+                    <li><strong style="color:var(--lbl-vg-action);">A — Action:</strong> Detail the tactical decision, execution, or recommendation that grounds your point.</li>
+                    <li><strong style="color:var(--lbl-vg-result);">R — Result:</strong> Quantify the outcome, impact, or evidence that proves your action worked.</li>
+                    <li><strong style="color:var(--lbl-vg-ask);">A — Ask:</strong> Hand the conversational baton back cleanly with a focused question or call to action.</li>
+                </ul>
+            </div>
 
-        <div class="framework-box hidden" id="guideIcebreaker">
-            <strong>💡 Toastmasters Official Signals (Ice Breaker Speech: 4–6 Minutes):</strong>
-            <ul>
-                <li><strong>0:00 - 3:59</strong> | <span style="color:var(--text-muted); font-weight:700;">⚪ Initial Phase:</span> Introduce yourself, background history, personal story, and goals.</li>
-                <li><strong>4:00 - 4:59</strong> | <span style="color:#22c55e; font-weight:700;">🟢 Green Card:</span> Minimum qualifying time reached (4 Minutes).</li>
-                <li><strong>5:00 - 5:59</strong> | <span style="color:#eab308; font-weight:700;">🟡 Yellow Card:</span> 1 Minute remaining - transition toward concluding message.</li>
-                <li><strong>6:00 - 6:30</strong> | <span style="color:#ef4444; font-weight:700;">🔴 Red Card:</span> Target time reached (6 Minutes). 30-second grace window active.</li>
-                <li><strong>6:30+</strong> | <span style="color:#f87171; font-weight:700;">⚠️ Overtime:</span> Exceeds maximum allowance (Disqualification threshold).</li>
-            </ul>
-        </div>
+            <div id="vgExplainer321" class="framework-box hidden" style="margin-top: 0; margin-bottom: 16px; border-left: 4px solid #c084fc;">
+                <strong>⚡ 3-2-1 Framework Execution:</strong>
+                <ul>
+                    <li><strong style="color:var(--lbl-vg-steps);">3 Steps (Process):</strong> Group the path forward into three sequential steps (e.g. Audit, Rebuild, Deploy).</li>
+                    <li><strong style="color:var(--lbl-vg-persp);">2 Perspectives (Nuance):</strong> Show executive range by highlighting two contrasting angles (e.g. Cultural vs. Systemic).</li>
+                    <li><strong style="color:var(--lbl-vg-core);">1 Thing (Anchor):</strong> End on the single non-negotiable priority that makes or breaks the entire initiative.</li>
+                </ul>
+            </div>
 
-        <div class="framework-box hidden" id="guidePrepared7">
-            <strong>💡 Toastmasters Official Signals (7-Min Prepared Speech: 5–7 Minutes):</strong>
-            <ul>
-                <li><strong>0:00 - 4:59</strong> | <span style="color:var(--text-muted); font-weight:700;">⚪ Initial Phase:</span> Deliver Hook, establish Point, start core narrative.</li>
-                <li><strong>5:00 - 5:59</strong> | <span style="color:#22c55e; font-weight:700;">🟢 Green Card:</span> Minimum qualifying time reached (5 Minutes).</li>
-                <li><strong>6:00 - 6:59</strong> | <span style="color:#eab308; font-weight:700;">🟡 Yellow Card:</span> 1 Minute remaining - begin summarizing key points.</li>
-                <li><strong>7:00 - 7:30</strong> | <span style="color:#ef4444; font-weight:700;">🔴 Red Card:</span> Target time reached (7 Minutes). 30-second grace window active.</li>
-                <li><strong>7:30+</strong> | <span style="color:#f87171; font-weight:700;">⚠️ Overtime:</span> Exceeds maximum allowance (Disqualification threshold).</li>
-            </ul>
-        </div>
-
-        <div class="framework-box hidden" id="guideFeedback">
-            <strong>💡 Toastmasters Official Signals (Audience Floor Feedback: 30 Sec – 1 Minute):</strong>
-            <ul>
-                <li><strong>0:00 - 0:29</strong> | <span style="color:var(--text-muted); font-weight:700;">⚪ Opening Appreciation:</span> Thank the Toastmaster/Leader, state meeting impression & reference Theme.</li>
-                <li><strong>0:30 - 0:44</strong> | <span style="color:#22c55e; font-weight:700;">🟢 Green Card:</span> Minimum time reached (30 Seconds). Commend a specific speaker & use Word of the Day.</li>
-                <li><strong>0:45 - 0:59</strong> | <span style="color:#eab308; font-weight:700;">🟡 Yellow Card:</span> 15 seconds remaining - wrap up key reflection point.</li>
-                <li><strong>1:00 - 1:15</strong> | <span style="color:#ef4444; font-weight:700;">🔴 Red Card:</span> Target limit reached (1 Minute). Deliver inspiring closing statement.</li>
-                <li><strong>1:15+</strong> | <span style="color:#f87171; font-weight:700;">⚠️ Overtime:</span> Exceeds 15-second grace window threshold.</li>
-            </ul>
-        </div>
-
-        <!-- Toggleable User Delivery & Improvement Guide -->
-        <button type="button" class="guide-toggle-btn" id="btnToggleGuide">
-            <span>📖 Executive Delivery & Improvement Guide</span>
-            <span id="guideArrow">▼</span>
-        </button>
-        
-        <div class="guide-content hidden" id="improvementGuide">
-            <p style="margin-top: 0;">Use these expert Toastmasters techniques to elevate your delivery during practice:</p>
-            <div class="guide-grid">
-                <div class="guide-card">
-                    <h4>1. Master the Strategic Pause</h4>
-                    <p>Instead of filler words ("um", "ah"), stop for 1-2 seconds. A deliberate pause makes you sound authoritative.</p>
+            <div class="flex-group" style="align-items: flex-end;">
+                <div class="input-wrapper" style="flex: 1.5;">
+                    <label class="form-label">Option A: Spontaneous Prompt Generator</label>
+                    <button id="btnVgGenerate" class="success" style="width: 100%;">⚡ Generate Framework Script</button>
                 </div>
-                <div class="guide-card">
-                    <h4>2. Vocal Variety & Energy</h4>
-                    <p>Energetic during <strong>The Hook</strong>, steady and precise for <strong>The Point</strong>, descriptive for <strong>The Story</strong>.</p>
+                <span style="align-self: center; font-weight: 600; padding-bottom: 12px; color: var(--text-muted);">OR</span>
+                <div class="input-wrapper" style="flex: 2;">
+                    <label class="form-label">Option B: Boardroom / Meeting Question</label>
+                    <input type="text" id="vgManualPrompt" placeholder="e.g. Why is the quarterly target behind schedule?">
                 </div>
-                <div class="guide-card">
-                    <h4>3. Anchor Eye Contact</h4>
-                    <p>Pick 3 virtual spots (left, center, right). Deliver one complete thought before moving focus.</p>
-                </div>
-                <div class="guide-card">
-                    <h4>4. Land <strong>The Drop</strong> Strong</h4>
-                    <p>Never conclude with "that's all." End on a call to action and close cleanly with "Thank you, Toastmaster."</p>
-                </div>
+                <button id="btnVgAnalyzeManual" style="margin-bottom: 0;">Analyze & Structure</button>
             </div>
         </div>
 
+        <!-- Vinh Giang Active Output Card -->
+        <div class="card">
+            <h2>Active Framework Delivery Hub</h2>
+            <span class="form-label" style="color: var(--text-muted);">Framework Question / Challenge:</span>
+            <div id="vgCurrentTopic" class="topic-display">Select P.A.R.A. or 3-2-1 above to initiate speech architecture...</div>
+
+            <div id="vgSpeechContainer" class="hidden">
+                <div class="speech-header-bar">
+                    <h3 id="vgOutputTitle" style="margin: 0; color: var(--text-main); font-size: 15px; font-weight: 700;">🎯 Vinh Giang Structured Response:</h3>
+                    <div style="display: flex; gap: 8px; align-items: center;">
+                        <button id="btnListenVgScript" class="secondary" style="padding: 6px 12px; font-size: 12px;">🔊 Listen Script</button>
+                        <button id="btnCopyVgScript" class="secondary" style="padding: 6px 12px; font-size: 12px;">📋 Copy Script</button>
+                    </div>
+                </div>
+                <div id="vgSpeechText" class="speech-box">Processing blueprint structure...</div>
+            </div>
+
+            <!-- Vinh Giang Vocal & Presence Coaching Cards -->
+            <button type="button" class="guide-toggle-btn" id="btnToggleVgCoaching">
+                <span>🎙️ Vinh Giang's 5 Vocal Foundations & Presence System</span>
+                <span id="vgGuideArrow">▼</span>
+            </button>
+            
+            <div class="guide-content hidden" id="vgCoachingGuide">
+                <p style="margin-top: 0;">Vinh Giang compares the human voice to an instrument with five controls you must consciously tune:</p>
+                <div class="guide-grid">
+                    <div class="guide-card">
+                        <h4>1. Rate of Speech (Pace)</h4>
+                        <p>Fast pace builds excitement and passion. Slow pace adds gravitas, authority, and emotional depth.</p>
+                    </div>
+                    <div class="guide-card">
+                        <h4>2. Pitch & Melody</h4>
+                        <p>Avoid a flat, robotic monotone. Move between higher and lower vocal notes to keep ears leaning in.</p>
+                    </div>
+                    <div class="guide-card">
+                        <h4>3. Volume Control</h4>
+                        <p>High volume projects executive authority; dropping volume to a soft whisper pulls people in for intimacy.</p>
+                    </div>
+                    <div class="guide-card">
+                        <h4>4. The Strategic Pause</h4>
+                        <p>Pauses kill filler words ("um," "ah"). They give your thoughts breathing room to truly land with the audience.</p>
+                    </div>
+                    <div class="guide-card">
+                        <h4>5. Tonality (Emotional Color)</h4>
+                        <p>Infuse warmth, conviction, empathy, or excitement depending on what the room requires.</p>
+                    </div>
+                    <div class="guide-card">
+                        <h4>The 4 Intentions</h4>
+                        <p>Identify what the listener wants: <strong>Information</strong> (facts), <strong>Connection</strong> (empathy), <strong>Peace</strong> (calm), or <strong>Fun</strong> (play).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
     <div class="footer">Developed by Rocky</div>
@@ -848,6 +1017,56 @@
     let timerInterval = null;
     let secondsElapsed = 0;
     let isSpeakingScript = false;
+    let currentActiveTab = 'toastmasters';
+
+    // Main Tab Switching Logic
+    function switchMainTab(tab) {
+        currentActiveTab = tab;
+        const btnTm = document.getElementById('tabBtnToastmasters');
+        const btnVg = document.getElementById('tabBtnVinhGiang');
+        const contentTm = document.getElementById('tabToastmastersContent');
+        const contentVg = document.getElementById('tabVinhGiangContent');
+
+        if (tab === 'toastmasters') {
+            btnTm.classList.add('active');
+            btnVg.classList.remove('active');
+            contentTm.classList.remove('hidden');
+            contentVg.classList.add('hidden');
+        } else {
+            btnVg.classList.add('active');
+            btnTm.classList.remove('active');
+            contentVg.classList.remove('hidden');
+            contentTm.classList.add('hidden');
+        }
+        resetTimer();
+    }
+
+    // Toggle Vinh Giang Framework Explainer
+    document.getElementById('vgFrameworkSelect').addEventListener('change', (e) => {
+        const val = e.target.value;
+        const expPara = document.getElementById('vgExplainerPara');
+        const exp321 = document.getElementById('vgExplainer321');
+        if (val === 'para') {
+            expPara.classList.remove('hidden');
+            exp321.classList.add('hidden');
+        } else {
+            expPara.classList.add('hidden');
+            exp321.classList.remove('hidden');
+        }
+    });
+
+    // Toggle Vinh Giang Coaching Guide
+    document.getElementById('btnToggleVgCoaching').addEventListener('click', () => {
+        const guide = document.getElementById('vgCoachingGuide');
+        const arrow = document.getElementById('vgGuideArrow');
+        if (guide.classList.contains('hidden')) {
+            guide.classList.remove('hidden');
+            arrow.textContent = '▲';
+        } else {
+            guide.classList.add('hidden');
+            arrow.textContent = '▼';
+        }
+    });
 
     // 📱 iPhone Dynamic Canvas App Icon Generator
     function generateDynamicAppleTouchIcon() {
@@ -857,7 +1076,6 @@
             canvas.height = 180;
             const ctx = canvas.getContext('2d');
             
-            // Draw dark slate rounded rectangle background
             ctx.fillStyle = '#0f172a';
             ctx.beginPath();
             if (ctx.roundRect) {
@@ -867,14 +1085,12 @@
             }
             ctx.fill();
 
-            // Draw cyan ring
             ctx.strokeStyle = '#38bdf8';
             ctx.lineWidth = 4;
             ctx.beginPath();
             ctx.arc(90, 82, 68, 0, Math.PI * 2);
             ctx.stroke();
 
-            // Draw microphone body
             ctx.fillStyle = '#38bdf8';
             ctx.beginPath();
             if (ctx.roundRect) {
@@ -884,14 +1100,12 @@
             }
             ctx.fill();
 
-            // Draw arc stand
             ctx.beginPath();
             ctx.arc(90, 78, 27, 0, Math.PI, false);
             ctx.strokeStyle = '#38bdf8';
             ctx.lineWidth = 6;
             ctx.stroke();
 
-            // Draw stem & base
             ctx.fillRect(86, 105, 8, 18);
             if (ctx.roundRect) {
                 ctx.roundRect(67, 123, 46, 7, 3.5);
@@ -900,7 +1114,6 @@
             }
             ctx.fill();
 
-            // Draw text
             ctx.fillStyle = '#f8fafc';
             ctx.font = '800 13px -apple-system, BlinkMacSystemFont, sans-serif';
             ctx.textAlign = 'center';
@@ -940,12 +1153,14 @@
         applyTheme(isLight ? 'dark' : 'light');
     });
 
-    // Official Toastmasters Timing Rules (Seconds)
+    // Timing Rules (Seconds)
     const TIMING_RULES = {
         impromptu: { green: 60, yellow: 90, red: 120, grace: 150 },      // 1m, 1m30s, 2m, 2m30s
         icebreaker: { green: 240, yellow: 300, red: 360, grace: 390 },   // 4m, 5m, 6m, 6m30s
         prepared7: { green: 300, yellow: 360, red: 420, grace: 450 },    // 5m, 6m, 7m, 7m30s
-        feedback: { green: 30, yellow: 45, red: 60, grace: 75 }          // 30s, 45s, 1m, 1m15s
+        feedback: { green: 30, yellow: 45, red: 60, grace: 75 },         // 30s, 45s, 1m, 1m15s
+        vg_para: { green: 45, yellow: 60, red: 90, grace: 110 },         // 45s, 1m, 1m30s, 1m50s
+        vg_321: { green: 60, yellow: 90, red: 120, grace: 150 }          // 1m, 1m30s, 2m, 2m30s
     };
 
     function startTimer() {
@@ -969,7 +1184,6 @@
         btn.textContent = '🚀 Start';
     }
 
-    // Text-to-Speech Audio Pronunciation Function
     function speakWord(text, lang = 'en-US') {
         if (!('speechSynthesis' in window)) {
             alert('Text-to-speech audio is not supported in this browser.');
@@ -996,9 +1210,9 @@
         }
     }
 
-    // Full Script Speech Audio Listener synchronized with Timer
-    document.getElementById('btnListenScript').addEventListener('click', () => {
-        const btn = document.getElementById('btnListenScript');
+    // TTS Synchronizer Helper
+    function handleListenScript(buttonId, textContainerId) {
+        const btn = document.getElementById(buttonId);
         if (!('speechSynthesis' in window)) {
             alert('Text-to-speech audio is not supported in this browser.');
             return;
@@ -1010,7 +1224,7 @@
             isSpeakingScript = false;
             btn.textContent = '🔊 Listen Script';
         } else {
-            const speechElement = document.getElementById('aiSpeechText');
+            const speechElement = document.getElementById(textContainerId);
             const plainText = speechElement.innerText || speechElement.textContent;
             if (!plainText || plainText.includes('Processing blueprint structure')) {
                 alert('No generated speech script available to listen to.');
@@ -1040,9 +1254,16 @@
             btn.textContent = '⏹️ Stop Audio';
             window.speechSynthesis.speak(utterance);
         }
+    }
+
+    document.getElementById('btnListenScript').addEventListener('click', () => {
+        handleListenScript('btnListenScript', 'aiSpeechText');
     });
 
-    // Toggle Improvement Guide visibility
+    document.getElementById('btnListenVgScript').addEventListener('click', () => {
+        handleListenScript('btnListenVgScript', 'vgSpeechText');
+    });
+
     document.getElementById('btnToggleGuide').addEventListener('click', () => {
         const guide = document.getElementById('improvementGuide');
         const arrow = document.getElementById('guideArrow');
@@ -1127,7 +1348,7 @@
         parts.push({ text: promptText });
         
         try {
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${key}`, {
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${key}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -1183,12 +1404,12 @@
           "word": "${wordToLookup}",
           "theme": "${themeToLookup}",
           "meaning": "Clear, concise dictionary definition",
-          "pronunciation_us": "American Pronunciation (e.g., /rɪˈzɪl.jənt/ or ri-ZIL-yuhnt)",
-          "pronunciation_uk": "British Pronunciation (e.g., /rɪˈzɪl.i.ənt/ or ri-ZIL-ee-uhnt)",
-          "pronunciation_hi": "Devanagari Script Pronunciation (e.g., रेजिलिएंट - Re-zil-i-ent)",
+          "pronunciation_us": "American Pronunciation",
+          "pronunciation_uk": "British Pronunciation",
+          "pronunciation_hi": "Devanagari Script Pronunciation",
           "examples": [
-            "First theme-aligned example sentence using ${wordToLookup}.",
-            "Second theme-aligned example sentence using ${wordToLookup}."
+            "First theme-aligned example sentence.",
+            "Second theme-aligned example sentence."
           ]
         }`;
 
@@ -1198,7 +1419,6 @@
         try {
             const cleanJsonStr = rawRes.replace(/```json/g, "").replace(/```/g, "").trim();
             const data = JSON.parse(cleanJsonStr);
-            
             updateContextDisplay(data, wordToLookup, themeToLookup);
         } catch (err) {
             console.error("JSON parsing error:", err);
@@ -1226,7 +1446,6 @@
             document.getElementById('thoughtBanner').classList.remove('hidden');
         }
 
-        // Render Theme-Aligned Example Sentences
         const examplesContainer = document.getElementById('displayWodExamples');
         if (data.examples && Array.isArray(data.examples) && data.examples.length > 0) {
             examplesContainer.innerHTML = data.examples.map(ex => `<li style="margin-bottom:6px;">${cleanTextContent(ex)}</li>`).join('');
@@ -1245,7 +1464,7 @@
         lookupWordInfo(word, theme);
     });
 
-    // Automatic Agenda Extraction Upon File Selection
+    // Automatic Agenda Extraction
     document.getElementById('agendaFileInput').addEventListener('change', async (e) => {
         const file = e.target.files[0];
         if (!file) return;
@@ -1255,28 +1474,28 @@
         fileStatus.style.color = "var(--btn-primary-bg)";
 
         const promptText = `Examine this Toastmasters meeting agenda document/flyer carefully.
-        Extract the following details:
+        Extract:
         1. "Theme of the Day"
         2. "Word of the Day"
-        3. "Thought of the Day" (e.g. quotes or inspirational statements)
+        3. "Thought of the Day" (quote)
         4. Dictionary meaning of the Word of the Day
-        5. American Accent (US) pronunciation phonetics of the Word of the Day
-        6. British Accent (UK) pronunciation phonetics of the Word of the Day
-        7. Hindi pronunciation in Devanagari script (e.g., रेजिलिएंट - Re-zil-i-ent)
-        8. 2 to 3 example sentences using the Word of the Day aligned with the extracted Theme of the Day.
+        5. American Accent (US) pronunciation phonetics
+        6. British Accent (UK) pronunciation phonetics
+        7. Hindi pronunciation in Devanagari script
+        8. 2 to 3 example sentences using the Word of the Day aligned with the Theme.
 
         Return STRICTLY valid JSON format without markdown code blocks:
         {
-          "theme": "extracted theme of the day",
-          "word": "extracted word of the day",
-          "thought": "extracted thought of the day quote",
-          "meaning": "definition of the word of the day",
-          "pronunciation_us": "American accent pronunciation",
-          "pronunciation_uk": "British accent pronunciation",
+          "theme": "extracted theme",
+          "word": "extracted word",
+          "thought": "extracted thought",
+          "meaning": "definition",
+          "pronunciation_us": "American pronunciation",
+          "pronunciation_uk": "British pronunciation",
           "pronunciation_hi": "Hindi pronunciation in Devanagari",
           "examples": [
-            "First theme-aligned example sentence.",
-            "Second theme-aligned example sentence."
+            "Example one",
+            "Example two"
           ]
         }`;
 
@@ -1332,6 +1551,7 @@
         }
     }
 
+    // Toastmasters Speech Parser
     function parseAndDisplaySpeech(rawSpeechText) {
         const hookMatch = rawSpeechText.match(/The Hook:([\s\S]*?)(?=The Point:)/i);
         const pointMatch = rawSpeechText.match(/The Point:([\s\S]*?)(?=The Story:)/i);
@@ -1358,14 +1578,129 @@
         }
     }
 
-    document.getElementById('btnCopyScript').addEventListener('click', () => {
-        const speechElement = document.getElementById('aiSpeechText');
-        const plainText = speechElement.innerText || speechElement.textContent;
-        navigator.clipboard.writeText(plainText).then(() => {
-            const btn = document.getElementById('btnCopyScript');
-            btn.textContent = '✅ Copied!';
-            setTimeout(() => { btn.textContent = '📋 Copy Script'; }, 2000);
+    // Vinh Giang Framework Parser (P.A.R.A. & 3-2-1)
+    function parseAndDisplayVgSpeech(rawSpeechText, frameworkType) {
+        if (frameworkType === 'para') {
+            const pointMatch = rawSpeechText.match(/POINT:([\s\S]*?)(?=ACTION:)/i);
+            const actionMatch = rawSpeechText.match(/ACTION:([\s\S]*?)(?=RESULT:)/i);
+            const resultMatch = rawSpeechText.match(/RESULT:([\s\S]*?)(?=ASK:)/i);
+            const askMatch = rawSpeechText.match(/ASK:([\s\S]*?)$/i);
+
+            if (pointMatch && actionMatch && resultMatch && askMatch) {
+                let html = `
+                    <span class="lbl-vg-point-badge">🔵 [P] POINT (Bottom-Line Upfront)</span>
+                    <span class="script-segment">${cleanTextContent(pointMatch[1])}</span>
+
+                    <span class="lbl-vg-action-badge">🟡 [A] ACTION (The Tactical Execution)</span>
+                    <span class="script-segment">${cleanTextContent(actionMatch[1])}</span>
+
+                    <span class="lbl-vg-result-badge">🟢 [R] RESULT (Measurable Impact & Proof)</span>
+                    <span class="script-segment">${cleanTextContent(resultMatch[1])}</span>
+
+                    <span class="lbl-vg-ask-badge">🟣 [A] ASK / NEXT STEP (Passing The Baton)</span>
+                    <span class="script-segment">${cleanTextContent(askMatch[1])}</span>
+                `;
+                document.getElementById('vgSpeechText').innerHTML = html;
+                return;
+            }
+        } else if (frameworkType === '321') {
+            const stepsMatch = rawSpeechText.match(/THREE STEPS:([\s\S]*?)(?=TWO PERSPECTIVES:)/i);
+            const perspMatch = rawSpeechText.match(/TWO PERSPECTIVES:([\s\S]*?)(?=ONE THING:)/i);
+            const oneMatch = rawSpeechText.match(/ONE THING:([\s\S]*?)$/i);
+
+            if (stepsMatch && perspMatch && oneMatch) {
+                let html = `
+                    <span class="lbl-vg-steps-badge">🪜 3 STEPS (The Sequential Process)</span>
+                    <span class="script-segment">${cleanTextContent(stepsMatch[1])}</span>
+
+                    <span class="lbl-vg-persp-badge">⚖️ 2 PERSPECTIVES (Strategic Nuance & Trade-offs)</span>
+                    <span class="script-segment">${cleanTextContent(perspMatch[1])}</span>
+
+                    <span class="lbl-vg-core-badge">⭐ 1 THING (The Core Priority Anchor)</span>
+                    <span class="script-segment">${cleanTextContent(oneMatch[1])}</span>
+                `;
+                document.getElementById('vgSpeechText').innerHTML = html;
+                return;
+            }
+        }
+        document.getElementById('vgSpeechText').textContent = cleanTextContent(rawSpeechText);
+    }
+
+    // Copy script handlers
+    function setupCopyBtn(btnId, containerId) {
+        document.getElementById(btnId).addEventListener('click', () => {
+            const el = document.getElementById(containerId);
+            const plainText = el.innerText || el.textContent;
+            navigator.clipboard.writeText(plainText).then(() => {
+                const btn = document.getElementById(btnId);
+                btn.textContent = '✅ Copied!';
+                setTimeout(() => { btn.textContent = '📋 Copy Script'; }, 2000);
+            });
         });
+    }
+    setupCopyBtn('btnCopyScript', 'aiSpeechText');
+    setupCopyBtn('btnCopyVgScript', 'vgSpeechText');
+
+    // Toastmasters AI Topic Generation
+    document.getElementById('btnAiTopic').addEventListener('click', async () => {
+        const btn = document.getElementById('btnAiTopic');
+        btn.textContent = 'Generating...';
+        btn.disabled = true;
+
+        const style = document.getElementById('topicStyle').value;
+        const mode = document.getElementById('speechMode').value;
+        
+        let lengthInstruction = "";
+        if (mode === 'icebreaker') {
+            lengthInstruction = "generate an Ice Breaker Toastmasters speech prompt and script outline (4 to 6 minutes). Focus on self-introduction, personal journey, key life experiences, and Toastmasters goals. Do not use asterisks or raw bullet points inside the sections.";
+        } else if (mode === 'prepared7') {
+            lengthInstruction = "generate a 5-to-7 minute Toastmasters formal prepared speech prompt and script outline. Provide well-developed paragraphs for a 5-to-7 minute speech. Do not use asterisks or raw bullet points inside the sections.";
+        } else if (mode === 'feedback') {
+            lengthInstruction = "generate an enthusiastic 30-to-60 second (50-90 words) Toastmasters Audience Floor Feedback speech response. Act as an audience member giving spontaneous feedback when asked by the Toastmaster/Leader. The speech MUST explicitly weave in the Theme of the Day and Word of the Day. Do not use asterisks or raw bullet points.";
+        } else {
+            lengthInstruction = "write a full example speech responding directly and uniquely to that newly generated topic for a 1-to-2 minute Toastmasters table topic performance.";
+        }
+
+        const meetingContext = getMeetingContextPrompt();
+
+        const promptText = `You are an expert Toastmasters coach. 
+        Generate a new topic for theme: "${style}".
+        Then, ${lengthInstruction}
+        DO NOT use markdown bold signs (asterisks) in script sections. ${meetingContext}
+        
+        Write 4 distinct blocks starting with:
+        The Hook: 
+        The Point: 
+        The Story: 
+        The Drop: 
+
+        Format:
+        [Generated topic prompt]
+        ---
+        The Hook: [Insert spoken script]
+        The Point: [Insert spoken script]
+        The Story: [Insert spoken script]
+        The Drop: [Insert spoken script]`;
+
+        try {
+            const rawText = await callGemini(promptText);
+            if (!rawText) return;
+
+            if (rawText.includes("---")) {
+                const parts = rawText.split("---");
+                displayTopic(parts[0].replace(/```/g, "").trim());
+                parseAndDisplaySpeech(parts[1].trim());
+            } else {
+                displayTopic(rawText);
+                document.getElementById('aiSpeechText').textContent = rawText;
+            }
+            document.getElementById('aiSpeechContainer').classList.remove('hidden');
+        } catch (error) {
+            console.error(error);
+        } finally {
+            btn.textContent = '✨ Generate Script & Topic';
+            btn.disabled = false;
+        }
     });
 
     document.getElementById('btnUseManual').addEventListener('click', async () => {
@@ -1439,67 +1774,111 @@
         }
     });
 
-    document.getElementById('btnAiTopic').addEventListener('click', async () => {
-        const btn = document.getElementById('btnAiTopic');
-        btn.textContent = 'Generating...';
-        btn.disabled = true;
-
+    // ==================== VINH GIANG GENERATOR ENGINES ====================
+    async function runVinhGiangWorkflow(userPrompt = null) {
+        const framework = document.getElementById('vgFrameworkSelect').value;
         const style = document.getElementById('topicStyle').value;
-        const mode = document.getElementById('speechMode').value;
-        
-        let lengthInstruction = "";
-        if (mode === 'icebreaker') {
-            lengthInstruction = "generate an Ice Breaker Toastmasters speech prompt and script outline (4 to 6 minutes). Focus on self-introduction, personal journey, key life experiences, and Toastmasters goals. Do not use asterisks or raw bullet points inside the sections.";
-        } else if (mode === 'prepared7') {
-            lengthInstruction = "generate a 5-to-7 minute Toastmasters formal prepared speech prompt and script outline. Provide well-developed paragraphs for a 5-to-7 minute speech. Do not use asterisks or raw bullet points inside the sections.";
-        } else if (mode === 'feedback') {
-            lengthInstruction = "generate an enthusiastic 30-to-60 second (50-90 words) Toastmasters Audience Floor Feedback speech response. Act as an audience member giving spontaneous feedback when asked by the Toastmaster/Leader. The speech MUST explicitly weave in the Theme of the Day and Word of the Day. Do not use asterisks or raw bullet points.";
-        } else {
-            lengthInstruction = "write a full example speech responding directly and uniquely to that newly generated topic for a 1-to-2 minute Toastmasters table topic performance.";
-        }
-
         const meetingContext = getMeetingContextPrompt();
 
-        const promptText = `You are an expert Toastmasters coach. 
-        Generate a new topic for theme: "${style}".
-        Then, ${lengthInstruction}
-        DO NOT use markdown bold signs (asterisks) in script sections. ${meetingContext}
-        
-        Write 4 distinct blocks starting with:
-        The Hook: 
-        The Point: 
-        The Story: 
-        The Drop: 
+        let promptText = "";
 
-        Format:
-        [Generated topic prompt]
-        ---
-        The Hook: [Insert spoken script]
-        The Point: [Insert spoken script]
-        The Story: [Insert spoken script]
-        The Drop: [Insert spoken script]`;
+        if (framework === 'para') {
+            promptText = `You are Vinh Giang, international communication coach and master speaker.
+            ${userPrompt ? `Topic/Challenge: "${userPrompt}"` : `Generate a challenging corporate or life impromptu question based on tone: "${style}".`}
+            
+            Write an exemplary impromptu spoken response strictly following the P.A.R.A. Framework:
+            - POINT: The Bottom Line Upfront (BLUF). Direct answer in sentence one without rambling.
+            - ACTION: Concrete, tactical execution, move, or strategy taken.
+            - RESULT: Measurable outcome, impact, or proof verifying the action.
+            - ASK: Passing the baton back cleanly with a focused question or call to action.
 
+            Do NOT use asterisks or markdown bolding in the script segments.
+            ${meetingContext}
+
+            Output STRICTLY in this format:
+            [Question / Challenge Statement]
+            ---
+            POINT: [Direct bottom-line answer]
+            ACTION: [Specific execution or move]
+            RESULT: [Concrete outcome and impact]
+            ASK: [Closing prompt/question passing the conversation back]`;
+        } else {
+            promptText = `You are Vinh Giang, international communication coach.
+            ${userPrompt ? `Topic/Challenge: "${userPrompt}"` : `Generate a complex workplace leadership or strategic scenario based on tone: "${style}".`}
+            
+            Write an exemplary spoken synthesis response strictly following the 3-2-1 Framework:
+            - THREE STEPS: Sequential 3-stage process (e.g. Audit, Rebuild, Deploy).
+            - TWO PERSPECTIVES: Two contrasting perspectives/trade-offs (e.g. Cultural vs. Systemic or Short-term vs. Long-term).
+            - ONE THING: The ultimate, non-negotiable core priority anchor.
+
+            Do NOT use asterisks or markdown bolding in the script segments.
+            ${meetingContext}
+
+            Output STRICTLY in this format:
+            [Question / Challenge Statement]
+            ---
+            THREE STEPS: [The 3-stage process]
+            TWO PERSPECTIVES: [The 2 contrasting strategic lenses]
+            ONE THING: [The single most critical takeaway]`;
+        }
+
+        const rawText = await callGemini(promptText);
+        if (!rawText) return;
+
+        if (rawText.includes("---")) {
+            const parts = rawText.split("---");
+            const qText = parts[0].replace(/```/g, "").trim();
+            document.getElementById('vgCurrentTopic').textContent = qText;
+            parseAndDisplayVgSpeech(parts[1].trim(), framework);
+        } else {
+            document.getElementById('vgCurrentTopic').textContent = userPrompt || "Framework Response:";
+            parseAndDisplayVgSpeech(rawText, framework);
+        }
+
+        document.getElementById('vgOutputTitle').textContent = framework === 'para' ? 
+            "🎯 Vinh Giang P.A.R.A. Speech Response:" : 
+            "⚡ Vinh Giang 3-2-1 Synthesis Speech Response:";
+        document.getElementById('vgSpeechContainer').classList.remove('hidden');
+        resetTimer();
+    }
+
+    document.getElementById('btnVgGenerate').addEventListener('click', async () => {
+        const btn = document.getElementById('btnVgGenerate');
+        btn.textContent = 'Generating...';
+        btn.disabled = true;
         try {
-            const rawText = await callGemini(promptText);
-            if (!rawText) return;
-
-            if (rawText.includes("---")) {
-                const parts = rawText.split("---");
-                displayTopic(parts[0].replace(/```/g, "").trim());
-                parseAndDisplaySpeech(parts[1].trim());
-            } else {
-                displayTopic(rawText);
-                document.getElementById('aiSpeechText').textContent = rawText;
-            }
-            document.getElementById('aiSpeechContainer').classList.remove('hidden');
-        } catch (error) {
-            console.error(error);
+            await runVinhGiangWorkflow();
+        } catch (e) {
+            console.error(e);
         } finally {
-            btn.textContent = '✨ Generate Script & Topic';
+            btn.textContent = '⚡ Generate Framework Script';
             btn.disabled = false;
         }
     });
 
+    document.getElementById('btnVgAnalyzeManual').addEventListener('click', async () => {
+        const input = document.getElementById('vgManualPrompt');
+        const text = input.value.trim();
+        if (!text) {
+            alert('Please enter a question or challenge in Option B first.');
+            return;
+        }
+
+        const btn = document.getElementById('btnVgAnalyzeManual');
+        btn.textContent = 'Analyzing...';
+        btn.disabled = true;
+        try {
+            await runVinhGiangWorkflow(text);
+            input.value = '';
+        } catch (e) {
+            console.error(e);
+        } finally {
+            btn.textContent = 'Analyze & Structure';
+            btn.disabled = false;
+        }
+    });
+
+    // Timer Controls
     function resetTimer() {
         stopTimer();
         secondsElapsed = 0;
@@ -1508,7 +1887,9 @@
             window.speechSynthesis.cancel();
             isSpeakingScript = false;
             const listenBtn = document.getElementById('btnListenScript');
+            const listenVgBtn = document.getElementById('btnListenVgScript');
             if (listenBtn) listenBtn.textContent = '🔊 Listen Script';
+            if (listenVgBtn) listenVgBtn.textContent = '🔊 Listen Script';
         }
 
         const widget = document.getElementById('timerWidget');
@@ -1528,7 +1909,6 @@
 
     document.getElementById('btnStartTimer').addEventListener('click', () => {
         const btn = document.getElementById('btnStartTimer');
-
         if (btn.textContent.includes('Start')) {
             startTimer();
         } else {
@@ -1537,7 +1917,9 @@
                 window.speechSynthesis.cancel();
                 isSpeakingScript = false;
                 const listenBtn = document.getElementById('btnListenScript');
+                const listenVgBtn = document.getElementById('btnListenVgScript');
                 if (listenBtn) listenBtn.textContent = '🔊 Listen Script';
+                if (listenVgBtn) listenVgBtn.textContent = '🔊 Listen Script';
             }
         }
     });
@@ -1547,12 +1929,18 @@
         const secs = (secondsElapsed % 60).toString().padStart(2, '0');
         document.getElementById('timerDisplay').textContent = `${mins}:${secs}`;
 
-        const mode = document.getElementById('speechMode').value;
-        const rule = TIMING_RULES[mode] || TIMING_RULES.impromptu;
+        let rule;
+        if (currentActiveTab === 'vinhgiang') {
+            const vgChoice = document.getElementById('vgFrameworkSelect').value;
+            rule = vgChoice === 'para' ? TIMING_RULES.vg_para : TIMING_RULES.vg_321;
+        } else {
+            const mode = document.getElementById('speechMode').value;
+            rule = TIMING_RULES[mode] || TIMING_RULES.impromptu;
+        }
+
         const widget = document.getElementById('timerWidget');
         const status = document.getElementById('timerStatus');
 
-        // Apply Toastmasters Timing Signal States
         if (secondsElapsed >= rule.grace) {
             widget.className = 'timer-sidebar signal-overtime';
             status.textContent = '⚠️ OVERTIME';
