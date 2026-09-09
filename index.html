@@ -10,7 +10,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Speech Hub">
     
-    <!-- iPhone Touch Icon Holder (Populated dynamically with PNG Base64) -->
+    <!-- iPhone Touch Icon Holder -->
     <link rel="apple-touch-icon" sizes="180x180" id="appleTouchIcon" href="">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230f172a'/><path d='M32 12c-4.4 0-8 3.6-8 8v10c0 4.4 3.6 8 8 8s8-3.6 8-8V20c0-4.4-3.6-8-8-8z' fill='%2338bdf8'/><path d='M20 30c0 6.6 5.4 12 12 12s12-5.4 12-12h-3c0 5-4 9-9 9s-9-4-9-9h-3z' fill='%2338bdf8'/><rect x='30' y='42' width='4' height='8' fill='%2338bdf8'/><rect x='22' y='50' width='20' height='4' rx='2' fill='%2338bdf8'/></svg>">
 
@@ -78,6 +78,12 @@
             --lbl-vg-core: #f87171;
             --lbl-vg-persp: #c084fc;
             --lbl-vg-steps: #60a5fa;
+
+            /* Matrix Card Accents */
+            --card-prep-border: #38bdf8;
+            --card-para-border: #34d399;
+            --card-321-border: #f87171;
+            --card-hpsd-border: #a78bfa;
         }
 
         /* Light Mode Theme Overrides */
@@ -141,6 +147,11 @@
             --lbl-vg-core: #dc2626;
             --lbl-vg-persp: #7c3aed;
             --lbl-vg-steps: #2563eb;
+
+            --card-prep-border: #0284c7;
+            --card-para-border: #059669;
+            --card-321-border: #dc2626;
+            --card-hpsd-border: #7c3aed;
         }
 
         *, *:before, *:after { box-sizing: border-box; }
@@ -217,11 +228,11 @@
             font-weight: 500;
         }
 
-        /* Top-Level Master Navigation Tabs */
+        /* Master Navigation Tabs */
         .nav-tabs {
             display: flex;
             gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             width: 100%;
             background: var(--card-bg);
             padding: 6px;
@@ -252,6 +263,97 @@
         .nav-tab-btn:hover:not(.active) {
             color: var(--text-main);
             background: var(--framework-bg);
+        }
+
+        /* Framework Decision Matrix Box */
+        .decision-guide-toggle-btn {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid var(--btn-primary-bg);
+            color: var(--text-main);
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease;
+        }
+        .decision-guide-toggle-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(56, 189, 248, 0.25);
+        }
+        .matrix-container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px;
+            margin-top: 14px;
+        }
+        .matrix-card {
+            background: var(--framework-bg);
+            border-radius: 10px;
+            padding: 16px;
+            border-top: 4px solid var(--card-border);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .matrix-card.prep { border-top-color: var(--card-prep-border); }
+        .matrix-card.para { border-top-color: var(--card-para-border); }
+        .matrix-card.v321 { border-top-color: var(--card-321-border); }
+        .matrix-card.hpsd { border-top-color: var(--card-hpsd-border); }
+        
+        .matrix-card h3 {
+            margin: 0 0 8px 0;
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .matrix-time-badge {
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 6px;
+            background: var(--input-bg);
+            color: var(--text-muted);
+            border: 1px solid var(--card-border);
+        }
+        .matrix-card p {
+            margin: 0 0 10px 0;
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+        .matrix-triggers {
+            background: var(--input-bg);
+            border-radius: 6px;
+            padding: 8px 10px;
+            font-size: 12px;
+            color: var(--text-main);
+            border-left: 3px solid var(--card-border);
+        }
+        .matrix-rule-of-thumb {
+            background: var(--input-bg);
+            border-left: 4px solid var(--btn-primary-bg);
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 16px;
+            font-size: 13px;
+            line-height: 1.6;
         }
 
         .thought-banner {
@@ -660,6 +762,7 @@
             .input-wrapper { width: 100% !important; min-width: 100% !important; }
             button, input, select, textarea { width: 100% !important; white-space: normal; }
             .guide-grid { grid-template-columns: 1fr; }
+            .matrix-grid { grid-template-columns: 1fr; }
             .speech-header-bar { flex-direction: column; align-items: flex-start; }
             .speech-header-bar div { width: 100%; display: flex; justify-content: space-between; }
             .audio-btn { width: auto !important; margin-left: auto; }
@@ -698,6 +801,87 @@
         <button id="tabBtnVinhGiang" class="nav-tab-btn" onclick="switchMainTab('vinhgiang')">
             🧠 Vinh Giang Studio (P.R.E.P. • P.A.R.A. • 3-2-1)
         </button>
+    </div>
+
+    <!-- 🧭 NEW: Framework Decision Navigator Toggle -->
+    <button type="button" class="decision-guide-toggle-btn" id="btnToggleDecisionGuide">
+        <span>🧭 Framework Selection Guide: Which Framework Should You Use When?</span>
+        <span id="decisionArrow">▼</span>
+    </button>
+
+    <!-- 🧭 NEW: Framework Decision Matrix Box -->
+    <div class="matrix-container hidden" id="decisionGuideContainer">
+        <div class="matrix-rule-of-thumb">
+            <strong style="color:var(--btn-primary-bg);">⚡ Quick Rule of Thumb:</strong>
+            <ul style="margin: 6px 0 0 0; padding-left: 20px; color:var(--text-main);">
+                <li>Giving an <strong>opinion, debate stance, or philosophical answer</strong>? $\rightarrow$ Use <strong style="color:var(--lbl-vg-point);">P.R.E.P.</strong></li>
+                <li>Giving a <strong>workplace update, status report, or problem fix</strong>? $\rightarrow$ Use <strong style="color:var(--lbl-vg-result);">P.A.R.A.</strong></li>
+                <li>Explaining a <strong>complex strategy, high-level plan, or roadmap</strong>? $\rightarrow$ Use <strong style="color:var(--lbl-vg-core);">3-2-1 Inverted</strong></li>
+                <li>Delivering an <strong>inspirational Table Topic with emotional storytelling</strong>? $\rightarrow$ Use <strong style="color:var(--lbl-hook);">Hook • Point • Story • Drop</strong></li>
+            </ul>
+        </div>
+
+        <div class="matrix-grid">
+            <!-- P.R.E.P. Card -->
+            <div class="matrix-card prep">
+                <div>
+                    <h3><span>🎯 P.R.E.P.</span> <span class="matrix-time-badge">45s – 90s</span></h3>
+                    <p><strong>Point • Reason • Example • Point</strong></p>
+                    <p>Vinh Giang's primary model for impromptu persuasion and defending a clear viewpoint without getting lost.</p>
+                </div>
+                <div class="matrix-triggers">
+                    <strong>When to use:</strong>
+                    <div>• Philosophical or abstract Table Topics</div>
+                    <div>• "Do you agree or disagree with...?"</div>
+                    <div>• Debates, town halls, or sharing an opinion</div>
+                </div>
+            </div>
+
+            <!-- P.A.R.A. Card -->
+            <div class="matrix-card para">
+                <div>
+                    <h3><span>⚙️ P.A.R.A.</span> <span class="matrix-time-badge">45s – 90s</span></h3>
+                    <p><strong>Point • Action • Result • Ask</strong></p>
+                    <p>Built specifically to eliminate rambling and demonstrate competence when put on the spot for an answer.</p>
+                </div>
+                <div class="matrix-triggers">
+                    <strong>When to use:</strong>
+                    <div>• Boardroom hot seats & status updates</div>
+                    <div>• "Why did this happen / What did you do?"</div>
+                    <div>• Project updates where a decision is required</div>
+                </div>
+            </div>
+
+            <!-- 3-2-1 Inverted Card -->
+            <div class="matrix-card v321">
+                <div>
+                    <h3><span>⚡ 3-2-1 Inverted</span> <span class="matrix-time-badge">1m – 2.5m</span></h3>
+                    <p><strong>1 Thing • 2 Perspectives • 3 Steps</strong></p>
+                    <p>Top-down executive synthesis. Prevents "data dumps" by locking in the headline before revealing the execution steps.</p>
+                </div>
+                <div class="matrix-triggers">
+                    <strong>When to use:</strong>
+                    <div>• "What is our strategy for next quarter?"</div>
+                    <div>• Explaining complex multi-team initiatives</div>
+                    <div>• Teaching, pitching, or leadership overviews</div>
+                </div>
+            </div>
+
+            <!-- Hook • Point • Story • Drop Card -->
+            <div class="matrix-card hpsd">
+                <div>
+                    <h3><span>🎭 H.P.S.D. (Classic)</span> <span class="matrix-time-badge">1m – 2m</span></h3>
+                    <p><strong>Hook • Point • Story • Drop</strong></p>
+                    <p>The standard Toastmasters storytelling architecture designed to capture attention and deliver an emotional moral.</p>
+                </div>
+                <div class="matrix-triggers">
+                    <strong>When to use:</strong>
+                    <div>• Metaphorical / Quote Table Topics</div>
+                    <div>• Toastmasters club speech contests</div>
+                    <div>• Sharing a memorable personal anecdote</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Thought of the Day Prominent Title Banner -->
@@ -782,7 +966,7 @@
                 <div class="input-wrapper">
                     <label class="form-label">Presentation Profile Type</label>
                     <select id="speechMode">
-                        <option value="impromptu" selected>Table Topic (1 to 2 Min Impromptu)</option>
+                        <option value="impromptu" selected>Table Topic (1 to 2 Min Impromptu) — Best for Hook-Point-Story-Drop</option>
                         <option value="icebreaker">Toastmasters Ice Breaker (4 to 6 Min Session)</option>
                         <option value="prepared7">Toastmasters Prepared Speech (5 to 7 Min Session)</option>
                         <option value="feedback">Toastmasters Audience Floor Feedback (30 Sec to 1 Min)</option>
@@ -819,7 +1003,7 @@
                 <div id="aiSpeechText" class="speech-box">Processing blueprint structure...</div>
             </div>
 
-            <!-- Dynamic Toastmasters Timing Framework Boxes -->
+            <!-- Toastmasters Timing Guides -->
             <div class="framework-box" id="guideImpromptu">
                 <strong>💡 Toastmasters Official Signals (Table Topics: 1–2 Minutes):</strong>
                 <ul>
@@ -905,9 +1089,9 @@
                 <div class="input-wrapper" style="flex: 1;">
                     <label class="form-label">Select Vinh Giang Framework</label>
                     <select id="vgFrameworkSelect">
-                        <option value="prep" selected>P.R.E.P. Framework (Point • Reason • Example • Point) — 45s to 90s</option>
-                        <option value="para">P.A.R.A. Framework (Point • Action • Result • Ask) — 45s to 90s</option>
-                        <option value="321">3-2-1 Framework (1 Thing • 2 Perspectives • 3 Steps) — 1m to 2.5m</option>
+                        <option value="prep" selected>P.R.E.P. (Point • Reason • Example • Point) — Opinions, Debates & Conviction</option>
+                        <option value="para">P.A.R.A. (Point • Action • Result • Ask) — Workplace Updates & Stop Rambling</option>
+                        <option value="321">3-2-1 Inverted (1 Thing • 2 Perspectives • 3 Steps) — Strategic Roadmaps & Synthesis</option>
                     </select>
                 </div>
             </div>
@@ -956,7 +1140,7 @@
             </div>
         </div>
 
-        <!-- Vinh Giang Active Output Card -->
+        <!-- Active Framework Output Card -->
         <div class="card">
             <h2>Active Framework Delivery Hub</h2>
             <span class="form-label" style="color: var(--text-muted);">Framework Question / Challenge:</span>
@@ -973,7 +1157,6 @@
                 <div id="vgSpeechText" class="speech-box">Processing blueprint structure...</div>
             </div>
 
-            <!-- Coaching Guide Card -->
             <button type="button" class="guide-toggle-btn" id="btnToggleVgCoaching">
                 <span>🎙️ Vinh Giang's 5 Vocal Foundations & Presence System</span>
                 <span id="vgGuideArrow">▼</span>
@@ -1041,6 +1224,19 @@
         resetTimer();
     }
 
+    // Toggle Decision Guide Container
+    document.getElementById('btnToggleDecisionGuide').addEventListener('click', () => {
+        const container = document.getElementById('decisionGuideContainer');
+        const arrow = document.getElementById('decisionArrow');
+        if (container.classList.contains('hidden')) {
+            container.classList.remove('hidden');
+            arrow.textContent = '▲';
+        } else {
+            container.classList.add('hidden');
+            arrow.textContent = '▼';
+        }
+    });
+
     // Toggle Vinh Giang Framework Explainers
     document.getElementById('vgFrameworkSelect').addEventListener('change', (e) => {
         const val = e.target.value;
@@ -1074,7 +1270,7 @@
         }
     });
 
-    // iPhone Dynamic Canvas App Icon Generator
+    // iPhone Canvas App Icon Generator
     function generateDynamicAppleTouchIcon() {
         try {
             const canvas = document.createElement('canvas');
@@ -1389,7 +1585,6 @@
                    .trim();
     }
 
-    // Lookup Word & Context Info via Gemini API
     async function lookupWordInfo(wordToLookup, themeToLookup = "") {
         if (!wordToLookup && !themeToLookup) return;
         
@@ -1469,7 +1664,6 @@
         lookupWordInfo(word, theme);
     });
 
-    // Automatic Agenda Extraction
     document.getElementById('agendaFileInput').addEventListener('change', async (e) => {
         const file = e.target.files[0];
         if (!file) return;
@@ -1556,7 +1750,6 @@
         }
     }
 
-    // Toastmasters Speech Parser
     function parseAndDisplaySpeech(rawSpeechText) {
         const hookMatch = rawSpeechText.match(/The Hook:([\s\S]*?)(?=The Point:)/i);
         const pointMatch = rawSpeechText.match(/The Point:([\s\S]*?)(?=The Story:)/i);
@@ -1583,7 +1776,6 @@
         }
     }
 
-    // Vinh Giang Framework Parser (PREP, PARA, 3-2-1 Inverted)
     function parseAndDisplayVgSpeech(rawSpeechText, frameworkType) {
         if (frameworkType === 'prep') {
             const pointMatch = rawSpeechText.match(/POINT:([\s\S]*?)(?=REASON:)/i);
@@ -1632,7 +1824,6 @@
                 return;
             }
         } else if (frameworkType === '321') {
-            // Updated Inverted Order: 1 Thing -> 2 Perspectives -> 3 Steps
             const oneMatch = rawSpeechText.match(/ONE THING:([\s\S]*?)(?=TWO PERSPECTIVES:)/i);
             const perspMatch = rawSpeechText.match(/TWO PERSPECTIVES:([\s\S]*?)(?=THREE STEPS:)/i);
             const stepsMatch = rawSpeechText.match(/THREE STEPS:([\s\S]*?)$/i);
@@ -1686,7 +1877,7 @@
         } else if (mode === 'feedback') {
             lengthInstruction = "generate an enthusiastic 30-to-60 second (50-90 words) Toastmasters Audience Floor Feedback speech response. Act as an audience member giving spontaneous feedback when asked by the Toastmaster/Leader. The speech MUST explicitly weave in the Theme of the Day and Word of the Day. Do not use asterisks or raw bullet points.";
         } else {
-            lengthInstruction = "write a full example speech responding directly and uniquely to that newly generated topic for a 1-to-2 minute Toastmasters table topic performance.";
+            lengthInstruction = "write a full example speech responding directly and uniquely to that newly generated topic for a 1-to-2 minute Toastmasters table topic performance using Hook, Point, Story, Drop.";
         }
 
         const meetingContext = getMeetingContextPrompt();
@@ -1753,7 +1944,7 @@
         } else if (mode === 'feedback') {
             lengthInstruction = "Create an enthusiastic, spontaneous 30-to-60 second (50-90 words) Audience Floor Feedback speech responding to the Toastmaster/Leader's call for meeting impressions. Thank the leader, commend meeting energy, and MUST naturally incorporate the Word of the Day and align with the Theme of the Day. DO NOT use markdown formatting.";
         } else {
-            lengthInstruction = "Write a complete, spoken example speech responding to this exact topic for a short 1-to-2 minute Toastmasters impromptu table topic performance. DO NOT use markdown formatting symbols.";
+            lengthInstruction = "Write a complete, spoken example speech responding to this exact topic for a short 1-to-2 minute Toastmasters impromptu table topic performance using Hook, Point, Story, Drop. DO NOT use markdown formatting symbols.";
         }
 
         let langConstraint = style === "simple" ? 
@@ -1851,7 +2042,6 @@
             RESULT: [Concrete outcome and impact]
             ASK: [Closing prompt/question passing the conversation back]`;
         } else {
-            // 3-2-1 Inverted Sequence: 1 Core Thing -> 2 Perspectives -> 3 Steps
             promptText = `You are Vinh Giang, international communication coach.
             ${userPrompt ? `Topic/Challenge: "${userPrompt}"` : `Generate a complex workplace leadership or strategic scenario based on tone: "${style}".`}
             
@@ -2012,3 +2202,4 @@
 
 </body>
 </html>
+
